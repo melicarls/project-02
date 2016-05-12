@@ -2,6 +2,11 @@
 
 <div>
   <h6>Select your foods:</h6>
+  <ul>
+    <% @ingredients.each do |i| %>
+    <li> <%= i.name %> </li>
+    <% end %>
+  </ul>
 </div>
 
 <div>
