@@ -2,6 +2,9 @@ class RecipesController < ApplicationController
 
   def search
     @ingredients = Ingredient.all
+    @search_terms = []
+    @basics = ['water', 'salt', 'pepper', 'olive oil', 'vegetable oil', 'flour', 'sugar']
+    @pantry = @search_terms + @basics
     render :search
   end
 
