@@ -18,7 +18,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.new(recipe_params)
     if @recipe.save
       flash[:notice] = "Successfully created Recipe"
-      redirect_to new_recipe_path
+      redirect_to recipe_path
     else
       flash[:error] = @recipe.errors.full_messages.join(", ")
     end
@@ -30,7 +30,13 @@ class RecipesController < ApplicationController
   end
 
   def update
-
+    @recipe = Recipe.find_by_id params[:id]
+      if @recipe.update(recipe_params)
+        flash[:notice] = "Successfully updated Recipe"
+        redirect_to recipe_path
+      else
+        flash[:error] = @recipe.errors.full_messages.join(", ")
+      end
   end
 
 private
