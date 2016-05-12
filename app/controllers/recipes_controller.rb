@@ -4,6 +4,11 @@ class RecipesController < ApplicationController
 
   end
 
+  def show
+    @recipe = Recipe.find_by_id params[:id]
+    render :show
+  end
+
   def new
     @recipe = Recipe.new
     render :new
