@@ -16,16 +16,6 @@ ActiveRecord::Schema.define(version: 20160512215548) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "ingredient_recipes", force: :cascade do |t|
-    t.integer  "ingredient_id"
-    t.integer  "recipe_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-  end
-
-  add_index "ingredient_recipes", ["ingredient_id"], name: "index_ingredient_recipes_on_ingredient_id", using: :btree
-  add_index "ingredient_recipes", ["recipe_id"], name: "index_ingredient_recipes_on_recipe_id", using: :btree
-
   create_table "ingredients", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -46,6 +36,4 @@ ActiveRecord::Schema.define(version: 20160512215548) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "ingredient_recipes", "ingredients"
-  add_foreign_key "ingredient_recipes", "recipes"
 end
