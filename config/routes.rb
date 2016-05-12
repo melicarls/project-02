@@ -4,13 +4,16 @@ Rails.application.routes.draw do
 
 
 
-
-
-
-
-
-
+#Recipe Routes
   get '/recipes', to: 'recipes#search', as: 'search_recipes'
+  get '/recipes/new', to: 'recipes#new', as: 'new_recipe'
+  post '/recipes', to: 'recipes#create'
+
+
+
+
+
+
 
 
 
@@ -22,5 +25,7 @@ Rails.application.routes.draw do
 
 # Catch-all route
   match '*path', to: 'recipes#search', via: :all
+
+
 
 end
