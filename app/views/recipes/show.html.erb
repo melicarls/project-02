@@ -2,4 +2,5 @@
 
 <%= @recipe.title %>
 
+<%= button_to "Edit Recipe", edit_recipe_path(@recipe), method: :get %>
 <%= button_to "Delete Recipe", destroy_recipe_path(@recipe), method: :delete %>
