@@ -10,7 +10,19 @@ class RecipesController < ApplicationController
   end
 
   def create
-
+    @recipe = Recipe.new(recipe_params)
+    if @recipe.save
+      flash[:notice] = "Successfully created Recipe"
+      redirect_to new_recipe_path
+    else
+      flash[:error] = @recipe.errors.full_messages.join(", ")
+    end
   end
-  
+
+private
+
+  def recipe_params
+    params.require(:recipe).permit(:title, :author, :directions)
+  end
+
 end
