@@ -1,3 +1,5 @@
 <h1>show page</h1>
 
 <%= @recipe.title %>
+
+<%= button_to "Delete Recipe", destroy_recipe_path(@recipe), method: :delete %>
