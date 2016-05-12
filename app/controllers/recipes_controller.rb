@@ -20,7 +20,8 @@ class RecipesController < ApplicationController
   end
 
   def edit
-
+    @recipe = Recipe.find_by_id params[:id]
+    render :edit
   end
 
   def update
