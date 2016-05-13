@@ -1,10 +1,11 @@
 class RecipesController < ApplicationController
 
+  @@basics = ['water', 'salt', 'pepper', 'olive oil', 'vegetable oil', 'flour', 'sugar']
+
   def search
     @ingredients = Ingredient.all
     @search_terms = []
-    @basics = ['water', 'salt', 'pepper', 'olive oil', 'vegetable oil', 'flour', 'sugar']
-    @pantry = @search_terms + @basics
+    @pantry = @search_terms + @@basics
     render :search
   end
 
@@ -21,7 +22,7 @@ class RecipesController < ApplicationController
     param_ids.each do |num|
       @ingred_search << @ingredients[(num.to_i)-1]
     end
-    @recipes = get_recipes(@ingred_search)
+    @recipes = get_recipes(@ingred_search, @@basics)
     render :index
   end
 
