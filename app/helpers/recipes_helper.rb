@@ -56,5 +56,3 @@ module RecipesHelper
   end
 
 end
-
-get_recipes(["tortilla", "cheese"])
