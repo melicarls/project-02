@@ -1,6 +1,5 @@
 <h1>All Recipes</h1>
 
-
 <% @recipes.sort {|a,b| a.missing_ingredients <=> b.missing_ingredients}.each do |r| %>
   <div class="panel panel-default">
     <div class="panel-heading"><h1><%= link_to "#{r.title}", recipe_path(r) %></h1></div>
@@ -13,9 +12,11 @@
       <h6>You're missing:</h6>
       <ul>
       <% r.missing_ingredients.each do |i| %>
-        <li>i.name</li>
+        <li> <%= i.name %></li>
       <% end %>
       </ul>
+    <% else %>
+      <p>You should have everything that you need to make a <%= r.title %>. Bon appetit!</p>
     <% end %>
   </div>
 </div>

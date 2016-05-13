@@ -1,11 +1,11 @@
 module RecipesHelper
 
   def get_recipes(ingredient_arr)
+    p "Looking for recipes with these ingredients", ingredient_arr
     recipes_arr = []
     p "Starting recipe array", recipes_arr
-    ingredient_arr.each do |searching|
-      p "Looking at this ingredient", searching
-      ingredient = Ingredient.find_by_name(searching)
+    ingredient_arr.each do |ingredient|
+      p "Looking at this ingredient", ingredient
       # Query join table to get all recipes with that ingredient
       recipes = ingredient.recipes.flatten
       p "Found these recipes", recipes
@@ -36,7 +36,7 @@ module RecipesHelper
       missing_ingredients = 0
       maybe_recipe.ingredients.each do |maybe_ingredient|
         p "Looking at this ingredient", maybe_ingredient.name
-        possible_ingredient = ingredients.include?(maybe_ingredient.name)
+        possible_ingredient = ingredients.include?(maybe_ingredient)
         p "This is in the user's pantry:", possible_ingredient
         if !possible_ingredient
           maybe_recipe.missing_ingredients.push(maybe_ingredient)
@@ -47,8 +47,6 @@ module RecipesHelper
           p maybe_recipe.title, "was a valid option!"
           p missing_ingredients, "many things are missing though"
           recipe_options.push(maybe_recipe)
-        else
-          p "The user doesn't have enough stuff to make", maybe_recipe.title
         end
       end
     end
