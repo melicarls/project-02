@@ -14,12 +14,12 @@ Rails.application.routes.draw do
   patch '/recipes/:id', to: 'recipes#update'
   delete '/recipes/:id', to: 'recipes#destroy', as: 'destroy_recipe'
 
+  devise_for :users
 
   get '/users/:id', to: 'users#show', as: 'user'
 
 
 
-  devise_for :users
 
 
 
