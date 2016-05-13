@@ -38,6 +38,7 @@ module RecipesHelper
         possible_ingredient = ingredients.include?(maybe_ingredient.name)
         p "This is in the user's pantry:", possible_ingredient
         if !possible_ingredient
+          maybe_recipe.missing_ingredients.push(maybe_ingredient)
           missing_ingredients += 1
           p maybe_ingredient, "wasn't in the user's pantry. Missing ingredient count is now", missing_ingredients
         end
