@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   delete '/recipes/:id', to: 'recipes#destroy', as: 'destroy_recipe'
 
 
+  get '/users/:id', to: 'users#show', as: 'user'
 
 
 
