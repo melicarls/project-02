@@ -6,7 +6,10 @@
   <h6>Select your foods:</h6>
   <ul>
     <% @ingredients.each do |i| %>
-    <li> <%= i.name %> </li>
+    <li>
+      <%= check_box_tag '@search_terms[]', i.id -%>
+      <%= h i.name -%>
+    </li>
     <% end %>
   </ul>
 </div>
