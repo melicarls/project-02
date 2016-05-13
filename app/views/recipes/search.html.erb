@@ -8,7 +8,7 @@
   <ul>
     <% @ingredients.each do |i| %>
     <li>
-      <%= check_box_tag (i.id) %>
+      <%= check_box_tag "ingredient[ingredient_ids][]", i.id%>
       <%= label_tag(i.name) %>
     </li>
     <% end %>
