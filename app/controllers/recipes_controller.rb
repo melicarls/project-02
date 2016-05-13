@@ -29,6 +29,7 @@ class RecipesController < ApplicationController
   end
 
   def new
+    @ingredients = Ingredient.all
     @recipe = Recipe.new
     render :new
   end
@@ -44,6 +45,7 @@ class RecipesController < ApplicationController
   end
 
   def edit
+    @ingredients = Ingredient.all
     @recipe = Recipe.find_by_id params[:id]
     render :edit
   end

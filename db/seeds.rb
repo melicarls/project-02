@@ -71,6 +71,12 @@ spaghetti = recipes[3].ingredients.push(ingredients[3], ingredients[6], ingredie
 hamburger = recipes[4].ingredients.push(ingredients[1], ingredients[3], ingredients[7], ingredients[10], ingredients[11], ingredients[12])
 blt = recipes[5].ingredients.push(ingredients[1], ingredients[7], ingredients[11], ingredients[12])
 burrito = recipes[6].ingredients.push(ingredients[0], ingredients[3], ingredients[4], ingredients[5], ingredients[11])
-chickenSoup = recipes[7].ingredients.push(ingredients[5], ingredients[6])
-taco = recipes[8].ingredients.push(ingredients[0], ingredients[3], ingredients[4], ingredients[5], ingredients[11], ingredients[12])
+chickenSoup = recipes[7].ingredients.push(ingredients[5], ingredients[6], ingredients[13])
+taco = recipes[8].ingredients.push(ingredients[0], ingredients[3], ingredients[4], ingredients[5], ingredients[11], ingredients[13])
 stirFry = recipes[9].ingredients.push(ingredients[5], ingredients[9], ingredients[12])
+
+queso = IngredientRecipe.last
+
+p queso
+queso.update_attributes(quantity: "5 slices")
+p queso.attributes
