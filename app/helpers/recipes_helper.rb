@@ -29,6 +29,7 @@ module RecipesHelper
     recipe_options = []
     p "Each recipe's ingredients need to be in this array", ingredients
     recipes.each do |maybe_recipe|
+      maybe_recipe.missing_ingredients = []
       p "Checking this recipe", maybe_recipe
       p "Here is it's ingredients list", maybe_recipe.ingredients
       # Start counting the number of missing ingredients for this specific recipe
@@ -55,3 +56,5 @@ module RecipesHelper
   end
 
 end
+
+get_recipes(["tortilla", "cheese"])
