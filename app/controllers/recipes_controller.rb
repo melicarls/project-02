@@ -11,7 +11,7 @@ class RecipesController < ApplicationController
 
   def index
     @recipes = Recipe.all
-    @ingred_search = Ingredient.find_by_id (params)
+    @ingred_search = Ingredient.find_by_id (params[:ingredient_id[0]])
     @search_terms = []
     render :index
   end
@@ -62,7 +62,7 @@ class RecipesController < ApplicationController
 private
 
   def recipe_params
-    params.require(:recipe).permit(:title, :author, :directions)
+    params.require(:recipe).permit(:title, :author, :directions, :ingredient_ids)
   end
 
 end
