@@ -11,8 +11,15 @@ class RecipesController < ApplicationController
 
   def index
     @recipes = Recipe.all
-    @ingred_search = Ingredient.find_by_id (params[:ingredient_id[0]])
-    @search_terms = []
+    @ingredients = Ingredient.all
+    @ingred_search = []
+    p "Here's params", params
+    p "This is nil?", (params[:ingredient][:ingredient_ids])
+    param_ids = (params[:ingredient][:ingredient_ids])
+    param_ids.each do |num|
+      @ingred_search << @ingredients[(num.to_i)-1]
+    end
+    p "Found ingredients:", @ingred_search
     render :index
   end
 
