@@ -1,7 +1,7 @@
 <h1>All Recipes</h1>
 
 
-<%= @recipes.sort {|a,b| a.missing_ingredients <=> b.missing_ingredients}.each do |r| %>
+<% @recipes.sort {|a,b| a.missing_ingredients <=> b.missing_ingredients}.each do |r| %>
   <div class="panel panel-default">
     <div class="panel-heading"><h1><%= link_to "#{r.title}", recipe_path(r) %></h1></div>
     <div class="panel-body">
