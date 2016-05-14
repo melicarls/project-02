@@ -59,15 +59,24 @@ module RecipesHelper
   # Method to call if an ingredient hasn't been pulled from the API already
   def search_yummly(ingredient_name)
     maybe_recipes = []
-    results_arr = HTTParty.get("http://api.yummly.com/v1/api/recipes?_app_id="+app-id+"&_app_key="+app-key+"&"+ingredient_name)
+    results_arr = HTTParty.get("http://api.yummly.com/v1/api/recipes?_app_id="+ENV[APP_ID]"&_app_key="+ENV[API_KEY]+"&"+ingredient_name)
     results_arr.matches.each do |result|
-      temp = Recipe.new({title: "",
-                    author: "",
-                    image: "",
-                    directions: ""})
-      temp.ingredients.push(results.ingredients)
+      temp = Recipe.new({
+                    title: result[:recipeName],
+                    author: result[:sourceDisplayName],
+                    image: result[:smallImageUrls][0],
+                    directions: "www.yummly.com/recipe/"+result[:id]})
+      new_ingredients = []
+      temp.ingredients.each do |el|
+        if !Ingredient.find_by(name: el)
+          new_i = Ingredient.new({name: el[:name]})
+          new_ingredients << new_i
+          new_i.save
+        end
+      new_ingredients.push(results[:ingredients])
       temp.save
       maybe_recipes << temp
+      end
     end
     maybe_recipes
   end
