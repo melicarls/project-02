@@ -4,8 +4,9 @@
 
 <div width=50%; float="left">
   <h6>Select your foods:</h6>
+  <input type="text" class="live-search-box" placeholder="Type ingredient name" />
   <%= form_tag(recipes_path, method: "get") do %>
-  <ul>
+  <ul class="live-search-list">
     <% @ingredients.each do |i| %>
     <li>
       <%= check_box_tag "ingredient[ingredient_index][]", i.id%>
