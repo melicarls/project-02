@@ -17,12 +17,12 @@ module RecipesHelper
       if ingredient[:last_searched]
         p "This is how long it's been since we searched for that", (Time.now - ingredient[:last_searched])
       end
-      if ingredient && ( !ingredient[:searched] || (Time.now - ingredient[:last_searched]) > 30 )
+      if ingredient && ( !(ingredient[:searched]) || (Time.now - ingredient[:last_searched]) > 30 )
         p "An API call is about to be made!"
         # Make sure to mark the ingredient as searched
-        temp_ing = Ingredient.find_by(name: ingredient.name)
-        temp_ing[:searched] = true
-        temp_ing[:last_searched] = Time.now
+        Ingredient.find_by(name: ingredient.name).update({"searched": true, "last_searched": Time.now})
+        p "Now the searched status is:", Ingredient.find_by(name: ingredient.name)[:searched]
+        p "And last searched is:", Ingredient.find_by(name: ingredient.name)[:last_searched]
         # Get recipe results from Yummly
         output = search_yummly(ingredient[:name])
         output.each do |el|
