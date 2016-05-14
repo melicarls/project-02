@@ -1,5 +1,7 @@
 module RecipesHelper
 
+  require 'date'
+
   def get_recipes(ingredient_arr, basics)
     p "Looking for recipes with these ingredients", ingredient_arr
     #Start with an empty array of potential recipes
@@ -9,18 +11,20 @@ module RecipesHelper
     ingredient_arr.each do |ingredient|
       p "Looking at this ingredient", ingredient
       # Need to decide whether the ingredient should be searched in the db or in the api
-      # Find the ingredient object
-      ingredient_obj = Ingredient.find_by(name: ingredient)
-      p "Got an ingredient object", ingredient_obj
       # If there is an ingredient object and it's either never been searched or it was searched more than a month ago
       # Query the API
-      if ingredient_obj && ( !ingredient_obj[:searched] || (Datetime.now - ingredient_obj[:last_searched]) > 30 )
+      p "Has the ingredient been searched?", ingredient[:searched]
+      if ingredient[:last_searched]
+        p "This is how long it's been since we searched for that", (Time.now - ingredient[:last_searched])
+      end
+      if ingredient && ( !ingredient[:searched] || (Time.now - ingredient[:last_searched]) > 30 )
         p "An API call is about to be made!"
         # Make sure to mark the ingredient as searched
-        ingredient_obj[:searched] = true
-        ingredient_obj[:last_searched] = Datetime.now
+        temp_ing = Ingredient.find_by(name: ingredient.name)
+        temp_ing[:searched] = true
+        temp_ing[:last_searched] = Time.now
         # Get recipe results from Yummly
-        output = search_yummly(ingredient)
+        output = search_yummly(ingredient[:name])
         output.each do |el|
           # If the recipe isn't a duplicate from an earlier search, push it into options
           if !recipes_arr.include?(el)
@@ -28,6 +32,7 @@ module RecipesHelper
           end
         end
       else
+        p "No need to search the API"
         # If there's an ingredient object and it's been searched recently, search the DB
         recipes = ingredient.recipes.flatten
         recipes.each do |el|
@@ -80,20 +85,20 @@ module RecipesHelper
     p "SEARCHING YUMMLY"
       maybe_recipes = []
       # Get all of the recipes containing the ingredient from Yummly
-      results_arr = HTTParty.get("http://api.yummly.com/v1/api/recipes?_app_id="+ENV[APP_ID]+"&_app_key="+ENV[API_KEY]+"&q="+ingredient_name+"&requirePictures=true")
-      p "Here are the api call results", results_arr
+      results = HTTParty.get("http://api.yummly.com/v1/api/recipes?_app_id="+ENV['APP_ID']+"&_app_key="+ENV['API_KEY']+"&q="+ingredient_name+"&requirePictures=true&allowedIngredient[]="+ingredient_name)
+      p "Here are the api call results", results
       # Iterate through all of the results from Yummly
-      results_arr.matches.each do |result|
+      results["matches"].each do |result|
         p "Adding this recipe to the database", result
         # If a recipe with the same name isn't already in the database, make a new one
-        if !Recipe.find_by(title: result[:recipeName])
+        if !Recipe.find_by(title: result["recipeName"])
           temp = Recipe.new({
-                        title: result[:recipeName],
-                        author: result[:sourceDisplayName],
-                        image: result[:smallImageUrls][0],
-                        directions: "www.yummly.com/recipe/"+result[:id]})
+                        title: result["recipeName"],
+                        author: result["sourceDisplayName"],
+                        image: result["imageUrlsBySize"]["90"],
+                        directions: "www.yummly.com/recipe/"+result["id"]})
         # Go through all of the result ingredients
-          result[:ingredients].each do |ingred|
+          result["ingredients"].each do |ingred|
         # If we have an ingredient object for it, link that ingredient to the recipe
             temp_i = Ingredient.find_by(name: ingred)
             if temp_i
