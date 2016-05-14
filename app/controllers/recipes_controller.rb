@@ -20,7 +20,7 @@ class RecipesController < ApplicationController
     end
     param_ids = (params[:ingredient][:ingredient_index])
     param_ids.each do |num|
-      @ingred_search << @ingredients[(num.to_i)-1]
+      @ingred_search << Ingredient.find(num.to_i)
     end
     @recipes = get_recipes(@ingred_search, @@basics)
     render :index
@@ -32,6 +32,7 @@ class RecipesController < ApplicationController
   end
 
   def new
+    @ingredients = Ingredient.all
     @recipe = Recipe.new
     render :new
   end
@@ -47,6 +48,7 @@ class RecipesController < ApplicationController
   end
 
   def edit
+    @ingredients = Ingredient.all
     @recipe = Recipe.find_by_id params[:id]
     render :edit
   end
@@ -72,7 +74,7 @@ class RecipesController < ApplicationController
 private
 
   def recipe_params
-    params.require(:recipe).permit(:title, :author, :directions)
+    params.require(:recipe).permit(:title, :author, :directions, :ingredient_recipes_attributes => [:quantity])
   end
 
 end

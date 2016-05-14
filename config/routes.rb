@@ -5,14 +5,18 @@ Rails.application.routes.draw do
 
 
 #Recipe Routes
-  get '/recipes/index', to: 'recipes#index', as: 'recipes'
-  get '/recipes/search', to: 'recipes#search', as: 'search_recipes'
-  get '/recipes/new', to: 'recipes#new', as: 'new_recipe'
-  post '/recipes', to: 'recipes#create'
-  get 'recipes/:id', to: 'recipes#show', as: 'recipe'
-  get '/recipes/:id/edit', to: 'recipes#edit', as: 'edit_recipe'
-  patch '/recipes/:id', to: 'recipes#update'
-  delete '/recipes/:id', to: 'recipes#destroy', as: 'destroy_recipe'
+  # get '/recipes/index', to: 'recipes#index', as: 'recipes'
+  # post '/recipes', to: 'recipes#create'
+  # get '/recipes/new', to: 'recipes#new', as: 'new_recipe'
+  # get '/recipes/:id/edit', to: 'recipes#edit', as: 'edit_recipe'
+  # get 'recipes/:id', to: 'recipes#show', as: 'recipe'
+  # patch '/recipes/:id', to: 'recipes#update'
+  # put '/recipes/:id', to: 'recipes#update'
+  # delete '/recipes/:id', to: 'recipes#destroy'
+
+  get '/search', to: 'recipes#search', as: 'search_recipes'
+
+  resources :recipes
 
   devise_for :users
 
