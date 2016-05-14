@@ -11,13 +11,13 @@ module RecipesHelper
     ingredient_arr.each do |ingredient|
       p "Looking at this ingredient", ingredient
       # Need to decide whether the ingredient should be searched in the db or in the api
-      # If there is an ingredient object and it's either never been searched or it was searched more than a month ago
       # Query the API
       p "Has the ingredient been searched?", ingredient[:searched]
       if ingredient[:last_searched]
-        p "This is how long it's been since we searched for that", (Time.now - ingredient[:last_searched])
+        p "This is how long it's been since we searched for that", ((Time.now - ingredient[:last_searched])/86400)
       end
-      if ingredient && ( !(ingredient[:searched]) || (Time.now - ingredient[:last_searched]) > 30 )
+      # If there is an ingredient object and it's either never been searched or it was searched more than a month ago
+      if ingredient && ( !(ingredient[:searched]) || (Time.now - ingredient[:last_searched]) > 2592000 )
         p "An API call is about to be made!"
         # Make sure to mark the ingredient as searched
         Ingredient.find_by(name: ingredient.name).update({"searched": true, "last_searched": Time.now})
