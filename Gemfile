@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'dotenv-rails', :groups => [:development, :test]
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
@@ -30,6 +31,7 @@ gem 'devise'
 gem 'bootstrap', '~> 4.0.0.alpha3'
 
 gem 'sprockets-rails', :require => 'sprockets/railtie'
+gem 'httparty'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
