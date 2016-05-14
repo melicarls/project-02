@@ -10,29 +10,29 @@
   <div class="row">
     <div class="col-sm-6">
       <div class="pull-left">
-      <%= link_to "Home", root_path %>
-</div>
-</div>
-<div class="col-sm-6">
-  <div class="pull-right">
-    <% if user_signed_in? %>
-      <%= link_to "Add Recipe", new_recipe_path, method: :get %> |
-      <%= link_to "Profile", user_path(current_user) %> |
-      <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%= link_to "Sign Up", new_user_registration_path %> |
-      <%= link_to "Log In", new_user_session_path %>
-    <% end %>
-</div>
-</div>
-</div>
-  <% flash.each do |type, message| %>
+        <%#= link_to "Home", search_recipes_path %>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="pull-right">
+        <% if user_signed_in? %>
+          <%= link_to "Add Recipe", new_recipe_path, method: :get %> |
+          <%= link_to "Profile", user_path(current_user) %> |
+          <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
+        <% else %>
+          <%= link_to "Sign Up", new_user_registration_path %> |
+          <%= link_to "Log In", new_user_session_path %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+    <% flash.each do |type, message| %>
     <div class="alert">
       <%= message %>
     </div>
-  <% end %>
-
-  <%= yield %>
-
-</body>
+    <% end %>
+    <div class="container">
+    <%= yield %>
+    </div>
+  </body>
 </html>

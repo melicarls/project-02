@@ -1,10 +1,11 @@
 class RecipesController < ApplicationController
 
+  @@basics = ['water', 'salt', 'pepper', 'olive oil', 'vegetable oil', 'flour', 'sugar']
+
   def search
     @ingredients = Ingredient.all
     @search_terms = []
-    @basics = ['water', 'salt', 'pepper', 'olive oil', 'vegetable oil', 'flour', 'sugar']
-    @pantry = @search_terms + @basics
+    @pantry = @search_terms + @@basics
     render :search
   end
 
@@ -12,14 +13,16 @@ class RecipesController < ApplicationController
   def index
     @ingredients = Ingredient.all
     @ingred_search = []
-    p "Here's params", params
-    p "This is nil?", (params[:ingredient][:ingredient_index])
+    if params[:ingredient] == nil
+      flash[:error] = "Sorry, you can't make something out of nothing. Go grocery shopping and try again."
+      redirect_to search_recipes_path
+      return
+    end
     param_ids = (params[:ingredient][:ingredient_index])
     param_ids.each do |num|
       @ingred_search << @ingredients[(num.to_i)-1]
     end
-    p "Found ingredients:", @ingred_search
-    @recipes = get_recipes(@ingred_search)
+    @recipes = get_recipes(@ingred_search, @@basics)
     render :index
   end
 
