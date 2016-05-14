@@ -1,0 +1,6 @@
+<h1>show page</h1>
+
+<%= @recipe.title %>
+
+<%= button_to "Edit Recipe", edit_recipe_path(@recipe), method: :get %>
+<%= button_to "Delete Recipe", "/recipes/#{@recipe.id}", method: :delete %>

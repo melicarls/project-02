@@ -1,0 +1,29 @@
+<%= button_to "Add a New Recipe", new_recipe_path, method: :get %>
+
+<h5>Enter the food that you have on hand and we'll serve up some delicious recipes for you to try!</h5>
+
+<div width=50%; float="left">
+  <h6>Select your foods:</h6>
+  <%= form_tag(recipes_path, method: "get") do %>
+  <ul>
+    <% @ingredients.each do |i| %>
+    <li>
+      <%= check_box_tag "ingredient[ingredient_index][]", i.id%>
+      <%= label_tag(i.name) %>
+    </li>
+    <% end %>
+  </ul>
+</div>
+
+<div>
+  <h6>Your pantry:</h6>
+  <ul>
+    <% @pantry.each do |item| %>
+    <li> <%= item %> </li>
+    <% end %>
+  </ul>
+</div>
+
+
+<%= submit_tag "Search" %>
+<% end %>
