@@ -1,33 +1,38 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>RecipeApp</title>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-    <%= csrf_meta_tags %>
-  </head>
-
-  <body>
-  <ul>
-    <% if user_signed_in? %>
-      <li> <%= link_to "Log Out", destroy_user_session_path, method: :delete %> </li>
-      <li> <%= link_to "Edit Profile", edit_user_registration_path %> </li>
-      <li> <%= link_to "View Your Profile", user_path(current_user) %> </li>
-    <% else %>
-      <li><%= link_to "Sign Up", new_user_registration_path %></li>
-      <li><%= link_to "Log In", new_user_session_path %></li>
-    <% end %>
-  </ul>
-
-    <% flash.each do |type, message| %>
-      <div class="alert">
-        <%= message %>
+<head>
+  <title>RecipeApp</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="pull-left">
+        <%#= link_to "Home", search_recipes_path %>
       </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="pull-right">
+        <% if user_signed_in? %>
+          <%= link_to "Add Recipe", new_recipe_path, method: :get %> |
+          <%= link_to "Profile", user_path(current_user) %> |
+          <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
+        <% else %>
+          <%= link_to "Sign Up", new_user_registration_path %> |
+          <%= link_to "Log In", new_user_session_path %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+    <% flash.each do |type, message| %>
+    <div class="alert">
+      <%= message %>
+    </div>
     <% end %>
     <div class="container">
-      <%= yield %>
+    <%= yield %>
     </div>
-
   </body>
-
 </html>
