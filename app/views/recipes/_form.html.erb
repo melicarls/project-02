@@ -2,17 +2,17 @@
   <%= f.text_field :title, placeholder: "Name your recipe", required: true %> <br />
   <%= f.text_field :author, placeholder: "Your Name", required: true %> <br />
   <%= f.text_area :directions, placeholder: "List the steps!", required: true %> <br />
-  <%= form_tag("/recipes/index", method: "get") do %>
+
   <ul>
     <% @ingredients.each do |i| %>
     <li>
       <%= check_box_tag "ingredient[ingredient_index][]", i.id%>
-      <%= label_tag(i.name) %>
-      <%= text_field_tag :quantity, placeholder: "How much #{i.name}?", required: true %>
+      <%= label_tag(i.name) %> <br/>
+      <%=  label_tag :quantity %>
+      <%=  text_field_tag :quantity %><br>
     </li>
     <% end %>
   </ul>
   <br/>
   <%= f.submit "Submit", :class => 'btn btn-info' %>
-<% end %>
 <% end %>
