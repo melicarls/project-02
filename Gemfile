@@ -28,6 +28,9 @@ gem 'hirb'
 
 gem 'devise'
 
+gem 'bootstrap', '~> 4.0.0.alpha3'
+
+gem 'sprockets-rails', :require => 'sprockets/railtie'
 gem 'httparty'
 
 # Use ActiveModel has_secure_password
