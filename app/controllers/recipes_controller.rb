@@ -32,13 +32,18 @@ class RecipesController < ApplicationController
   end
 
   def new
-    @ingredients = Ingredient.all
-    @recipe = Recipe.new
-    render :new
+    if current_user
+      @ingredients = Ingredient.all
+      @recipe = Recipe.new
+      render :new
+    else
+      redirect_to search_recipes_path
+    end
   end
 
   def create
     @recipe = Recipe.new(recipe_params)
+    @recipe.author = current_user.email
     if @recipe.save
       flash[:notice] = "Successfully created Recipe"
       redirect_to recipe_path(@recipe)
