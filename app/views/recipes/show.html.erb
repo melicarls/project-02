@@ -1,6 +1,23 @@
-<h1>show page</h1>
+<h2><%= @recipe.title %></h2>
 
-<%= @recipe.title %>
+<img src=" <%= @recipe.image %> "/>
+<h4>Provided by <%= @recipe.author %></h4>
+<h4>Ingredients</h4>
+<ul>
+  <% @recipe.ingredients.each do |i| %>
+    <li><%= i.name.capitalize %></li>
+  <% end %>
+</ul>
 
+<% if @recipe.directions.include?("yummly") %>
+  <h4>This recipe was sourced from Yummly! Please click here to
+    <%= link_to 'visit Yummly', "http://#{@recipe.directions}", :target => '_blank' %>
+    and access the full instructions.
+  </h4>
+<% else %>
+  <p>
+    <%= @recipe.directions %>
+  </p>
+<% end %>
 <%= button_to "Edit Recipe", edit_recipe_path(@recipe), method: :get %>
 <%= button_to "Delete Recipe", "/recipes/#{@recipe.id}", method: :delete %>
