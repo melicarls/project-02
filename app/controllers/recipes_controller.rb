@@ -16,7 +16,7 @@ class RecipesController < ApplicationController
     p "This is nil?", (params[:ingredient][:ingredient_index])
     param_ids = (params[:ingredient][:ingredient_index])
     param_ids.each do |num|
-      @ingred_search << @ingredients[(num.to_i)-1]
+      @ingred_search << Ingredient.find(num.to_i)
     end
     p "Found ingredients:", @ingred_search
     @recipes = get_recipes(@ingred_search)
@@ -71,7 +71,7 @@ class RecipesController < ApplicationController
 private
 
   def recipe_params
-    params.require(:recipe).permit(:title, :author, :directions)
+    params.require(:recipe).permit(:title, :author, :directions, :ingredient_recipes_attributes => [:quantity])
   end
 
 end
