@@ -27,15 +27,13 @@
 </br>
 
     <% flash.each do |type, message| %>
-      <div class="alert">
-        <%= message %>
-      </div>
+    <div class="alert">
+      <%= message %>
+    </div>
     <% end %>
 
     <div class="container">
-      <%= yield %>
+    <%= yield %>
     </div>
-
   </body>
-
 </html>
