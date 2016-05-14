@@ -64,19 +64,50 @@ recipes = Recipe.create([
       3. Heat 1 tablespoon sesame oil in a large skillet over medium-high heat. Cook and stir bell pepper, water chestnuts, broccoli, carrots, and onion until just tender, about 5 minutes. Remove vegetables from skillet and keep warm.
       4. Remove chicken from marinade, reserving liquid. Heat 1 tablespoon sesame oil in skillet over medium-high heat. Cook and stir chicken until slightly pink on the inside, about 2 minutes per side; return vegetables and reserved marinade to skillet. Bring to a boil; cook and stir until chicken is no longer pink in the middle and vegetables are tender, 5 to 7 minutes. Serve over rice.'}
   ])
-quesadilla = recipes[0].ingredients.push(ingredients[3], ingredients[4], ingredients[5])
-mac = recipes[1].ingredients.push(ingredients[3], ingredients[6])
-omelette = recipes[2].ingredients.push(ingredients[2], ingredients[3], ingredients[7], ingredients[8], ingredients[9], ingredients[12])
-spaghetti = recipes[3].ingredients.push(ingredients[3], ingredients[6], ingredients[7], ingredients[10])
-hamburger = recipes[4].ingredients.push(ingredients[1], ingredients[3], ingredients[7], ingredients[10], ingredients[11], ingredients[12])
-blt = recipes[5].ingredients.push(ingredients[1], ingredients[7], ingredients[11], ingredients[12])
-burrito = recipes[6].ingredients.push(ingredients[0], ingredients[3], ingredients[4], ingredients[5], ingredients[11])
-chickenSoup = recipes[7].ingredients.push(ingredients[5], ingredients[6], ingredients[13])
-taco = recipes[8].ingredients.push(ingredients[0], ingredients[3], ingredients[4], ingredients[5], ingredients[11], ingredients[13])
-stirFry = recipes[9].ingredients.push(ingredients[5], ingredients[9], ingredients[12])
 
-queso = IngredientRecipe.last
+  ingredients_for_recipes_list =
+  [
+    [ingredients[3], ingredients[4], ingredients[5]],
+    [ingredients[3], ingredients[6]],
+    [ingredients[2], ingredients[3], ingredients[7], ingredients[8], ingredients[9], ingredients[12]],
+    [ingredients[1], ingredients[3], ingredients[7], ingredients[10], ingredients[11], ingredients[12]]
+  ]
+# recipes.length.times do |recipe|
+# [ingredients[3], ingredients[4], ingredients[5]].each do |ing|
+#   IngredientRecipe.create(
+#     recipe_id: Recipe.find_by(title: recipe.title).id,
+#     ingredient_id: ing.id,
+#     quantity: "1.5 cups"
+#   )
+# end
 
-p queso
-queso.update_attributes(quantity: "5 slices")
-p queso.attributes
+#traverse through each element index
+ingredients_for_recipes_list.each_index do |i|
+  #quesadilla
+  recipe = recipes[i]
+  #quesadilla ingredients
+  ingredients_for_recipe = ingredients_for_recipes_list[i]
+
+  #for each ingredient for quesadilla
+  ingredients_for_recipe.each do |ing|
+    #create an IngredientRecipe
+    IngredientRecipe.create(
+      #recipe_id will be found by pinging database via quesdilla's title
+      recipe_id: Recipe.find_by(title: recipe.title).id,
+      ingredient_id: Ingredient.find_by(name: ing.name).id,
+      quantity: "35 slices"
+    )
+  end
+end
+
+
+
+# mac = recipes[1].ingredients.push(ingredients[3], ingredients[6])
+# omelette = recipes[2].ingredients.push(ingredients[2], ingredients[3], ingredients[7], ingredients[8], ingredients[9], ingredients[12])
+# spaghetti = recipes[3].ingredients.push(ingredients[3], ingredients[6], ingredients[7], ingredients[10])
+# hamburger = recipes[4].ingredients.push(ingredients[1], ingredients[3], ingredients[7], ingredients[10], ingredients[11], ingredients[12])
+# blt = recipes[5].ingredients.push(ingredients[1], ingredients[7], ingredients[11], ingredients[12])
+# burrito = recipes[6].ingredients.push(ingredients[0], ingredients[3], ingredients[4], ingredients[5], ingredients[11])
+# chickenSoup = recipes[7].ingredients.push(ingredients[5], ingredients[6])
+# taco = recipes[8].ingredients.push(ingredients[0], ingredients[3], ingredients[4], ingredients[5], ingredients[11], ingredients[12])
+# stirFry = recipes[9].ingredients.push(ingredients[5], ingredients[9], ingredients[12])
