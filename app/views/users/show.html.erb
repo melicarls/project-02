@@ -1,4 +1,4 @@
-<% if @user.image.nil? %>
+<% if @user.image.blank? %>
   <%= image_tag "defaultprofile.jpg", :width => 250 %>
 <% else %>
   <%= image_tag @user.image, :width => 250, :class => "img-circle" %>
