@@ -8,7 +8,7 @@
     <% @ingredients.each do |i| %>
     <li>
       <%= check_box_tag "ingredient[ingredient_index][]", i.id%>
-      <%= label_tag(i.name) %>
+      <button class="ingredient"><%= label_tag(i.name) %></button>
     </li>
     <% end %>
   </ul>
@@ -16,11 +16,9 @@
 
 <div>
   <h6>Your pantry:</h6>
-  <ul>
-    <% @pantry.each do |item| %>
-    <li> <%= item %> </li>
-    <% end %>
-  </ul>
+  <% @pantry.each do |item| %>
+    <button class="ingredient"> <%= item %> </button>
+  <% end %>
 </div>
 
 

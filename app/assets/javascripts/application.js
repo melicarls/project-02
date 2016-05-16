@@ -16,6 +16,8 @@
 //= require turbolinks
 //= require_tree .
 $(document).on('ready', function(){
+
+  // Filter search
   $('.live-search-list li').each(function(){
     $(this).attr('data-search-term', $(this).text().toLowerCase());
   });
@@ -30,5 +32,10 @@ $(document).on('ready', function(){
     });
   });
 
+
+  // Select ingredients with buttons
+  $('.ingredient').on('click', function() {
+    $(this).preventDefault();
+  });
 
 });
