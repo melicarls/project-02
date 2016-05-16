@@ -22,7 +22,7 @@ Rails.application.routes.draw do
 
   get '/users/:id', to: 'users#show', as: 'user'
 
-  get '/about', to: 'recipes#about'
+  get '/about', to: 'recipes#about', as: 'about'
 
 
 
