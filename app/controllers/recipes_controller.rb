@@ -76,6 +76,10 @@ class RecipesController < ApplicationController
     end
   end
 
+  def about
+    render :about
+  end
+
 private
 
   def recipe_params
