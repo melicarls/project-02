@@ -3,9 +3,4 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-
-  # def avatar
-  #     image.present? ? @user.image : "defaultprofile.jpg"
-  # end
-
 end
