@@ -14,6 +14,12 @@
   </ul>
 </div>
 
+<button type="button" id="check_all" class="btn btn-info">
+    Check / Uncheck All
+</button>
+</br>
+</br>
+
 <div>
   <h6>Your pantry:</h6>
   <ul>
@@ -24,5 +30,9 @@
 </div>
 
 
-<%= submit_tag "Search" %>
+<%= submit_tag "Search", :class => 'btn btn-primary'%>
 <% end %>
+
+<script type='text/javascript'>
+    $('#check_all').on("click", function(){ $('input[type="checkbox"]').click(); });
+</script>
