@@ -1,15 +1,14 @@
 
-<div class="card card-inverse">
+<div class="card card-inverse text-xs-center">
   <h2><%= @recipe.title %></h2>
   <img src=" <%= @recipe.image %> "/>
 
 <h4>Provided by <%= @recipe.author %></h4>
-<h4>Ingredients</h4>
-<ul>
+<h4>Ingredients:</h4>
+
   <% @recipe.ingredients.each do |i| %>
     <li><%= i.name.capitalize %></li>
   <% end %>
-</ul>
 
 <% if @recipe.directions.include?("yummly") %>
   <h4>This recipe was sourced from Yummly! Please click here to
