@@ -1,2 +1,22 @@
 
 @import "bootstrap";
+
+.navbar {
+	background-color:#219922;
+    color:#ffffff;
+}
+
+body {
+  background-image: image-url("veggies.jpeg");
+  background-size: cover;
+}
+
+#recipes {
+  padding: 20px;
+  margin-left: auto;
+}
+
+#recipes img {
+  height: 300px;
+  width: auto;
+}
