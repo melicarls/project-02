@@ -15,7 +15,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
-jQuery(document).ready(function($){
+$(document).on('ready', function(){
   $('.live-search-list li').each(function(){
     $(this).attr('data-search-term', $(this).text().toLowerCase());
   });
@@ -29,4 +29,6 @@ jQuery(document).ready(function($){
       }
     });
   });
+
+
 });
