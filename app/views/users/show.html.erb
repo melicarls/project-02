@@ -1,3 +1,5 @@
+<div class="border-form-div">
+
 <% if @user.image.blank? %>
   <%= image_tag "defaultprofile.jpg", :width => 250 %>
 <% else %>
@@ -14,9 +16,11 @@
   Email address: <%= @user.email %>
 </p>
 <p>
-  Date joined: <%= @user.created_at %>
+  Date joined: <%= @user.created_at.strftime("%m/%d/%Y") %>
 </p>
 <p>
-  Last seen: <%= @user.last_sign_in_at %>
+  Last seen: <%= time_ago_in_words(@user.last_sign_in_at) %> ago
 </p>
 <%= link_to "Edit Profile", edit_user_registration_path %>
+
+</div>

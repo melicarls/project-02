@@ -1,8 +1,38 @@
 
 @import "bootstrap";
 
+.navbar {
+	background-color:#219922;
+    color:#ffffff;
+}
+
+.navbar a:hover {
+  background-color: green;
+}
+
 body {
-    font-family:sans-serif;
+  background-image: image-url("veggies.jpeg");
+  background-size: cover;
+  font-family:sans-serif;
+}
+
+#recipes {
+  padding: 20px;
+  margin-left: auto;
+}
+
+#recipes img {
+  height: 300px;
+  width: auto;
+}
+
+.jumbotron img {
+  background-size: cover;
+}
+
+.card-inverse {
+  padding: inherit;
+  color: #219922;
 }
 
 .ck-button {
@@ -31,8 +61,10 @@ label .ck-button span {
 }
 
 .ck-button :checked + span {
-    color:red;
-    border:1px solid red;
+    color:#219922;
+    border:1px solid #219922;
+    border-radius: 4px;
+    height: 49px;
 }
 
 .ck-button:hover {
@@ -43,4 +75,38 @@ label .ck-button span {
 .ck-button input {
   position: absolute;
   visibility: hidden;
+}
+
+.search-ingredients {
+  max-width: 2000px;
+  padding: 19px 29px 29px;
+  background-color: rgba(255, 255, 255, 0.5);
+
+}
+
+/* User sign in and sign out forms. */
+.border-form-div {
+  max-width: 300px;
+  padding: 19px 29px 29px;
+  margin: 0 auto 20px;
+  background-color: #fff;
+  border: 1px solid #e5e5e5;
+  -webkit-border-radius: 5px;
+     -moz-border-radius: 5px;
+          border-radius: 5px;
+  -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+     -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+          box-shadow: 0 1px 2px rgba(0,0,0,.05);
+}
+.border-form-div .form-signin-heading,
+.border-form-div .checkbox {
+  margin-bottom: 10px;
+}
+.border-form-div input[type="text"],
+.border-form-div input[type="email"],
+.border-form-div input[type="password"] {
+  font-size: 16px;
+  height: auto;
+  margin-bottom: 15px;
+  padding: 7px 9px;
 }
