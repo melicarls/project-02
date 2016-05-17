@@ -22,6 +22,9 @@ Rails.application.routes.draw do
 
   get '/users/:id', to: 'users#show', as: 'user'
 
+  post '/users/:id/starred', to: 'users#star', as: 'new_user_star'
+
+  delete '/users/:id/starred/:recipe_id', to: 'users#removestar', as: 'delete_user_star'
 
   get '/about', to: 'recipes#about', as: 'about'
 
