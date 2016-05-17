@@ -11,6 +11,9 @@
   <button type="button" id="clearPantry" class="btn btn-warning">Clear Pantry</button>
 
   <%= form_tag(recipes_path, method: "get") do %>
+
+  <%= submit_tag "Search", :class => "btn btn-success"%>
+
   <ul class="live-search-list">
     <% @ingredients.sort.each do |i| %>
     <label>
@@ -34,5 +37,4 @@
   <% end %>
 </div>
 
-<%= submit_tag "Search", :class => "btn" %>
 <% end %>
