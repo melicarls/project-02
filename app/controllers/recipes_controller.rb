@@ -43,7 +43,6 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.new(recipe_params)
-    @recipe.author = current_user.email
     if @recipe.save
       flash[:notice] = "Successfully created Recipe"
       redirect_to recipe_path(@recipe)
