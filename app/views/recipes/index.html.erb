@@ -1,9 +1,17 @@
-<h1>All Recipes</h1>
+<h1>Search Results</h1>
 
 <% if @recipes.length == 0 %>
   <h3>Ooops, we don't have any recipes with those ingredients. You should probably either go grocery shopping. <br /> ...or get creative with what you have! If it's tasty, let us know and submit a recipe!</h3>
 <% end %>
 
+<h5>You're viewing results for the following ingredients:</h5>
+<ul>
+  <% @ingred_search.each do |ing| %>
+  <li>
+    <%= ing.name %>
+  </li>
+  <% end %>
+</ul>
 
 <% @recipes.sort {|a,b| a.missing_ingredients <=> b.missing_ingredients}.each do |r| %>
   <div class="card col-md-6">
