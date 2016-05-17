@@ -36,10 +36,4 @@ $(document).on('ready', function(){
     $('input:checkbox').attr('checked',false);
   });
 
-  $('#savePantry').on('click', function(e) {
-    alert("This doesn't work yet!");
-  });
-
-
-
 });

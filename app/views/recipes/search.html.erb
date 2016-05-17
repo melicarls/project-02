@@ -4,34 +4,26 @@
   <h6>Select your foods:</h6>
   <input type="text" class="live-search-box" placeholder="Type ingredient name" />
 
-  <% if current_user %>
-    <button type="button" id="savePantry" class="btn btn-info">Save Pantry</button>
-  <% end %>
-
-  <button type="button" id="clearPantry" class="btn btn-warning">Clear Pantry</button>
+  <button type="button" id="clearPantry" class="btn btn-warning">Clear Selected</button>
 
   <%= form_tag(recipes_path, method: "get") do %>
   <ul class="live-search-list">
     <% @ingredients.sort.each do |i| %>
     <label>
-      <div class="ck-button">
-          <%= check_box_tag "ingredient[ingredient_index][]", i.id %>
-          <span><%= label_tag(i.name) %></span>
-      </div>
+      <% if current_user.ingredients.include?(i) %>
+        <div class="ck-button">
+            <%= check_box_tag "ingredient[ingredient_index][]", i.id, :selected %>
+            <span><%= label_tag(i.name) %></span>
+        </div>
+      <% else %>
+        <div class="ck-button">
+            <%= check_box_tag "ingredient[ingredient_index][]", i.id %>
+            <span><%= label_tag(i.name) %></span>
+        </div>
+      <% end %>
     </label>
     <% end %>
   </ul>
-</div>
-
-<div id="pantry">
-  <h6>Your pantry:</h6>
-  <% @pantry.each do |item| %>
-  <div class="ck-button">
-    <label>
-      <span> <%= item %> </span>
-    </label>
-  </div>
-  <% end %>
 </div>
 
 <%= submit_tag "Search", :class => "btn" %>

@@ -1,16 +1,14 @@
 class RecipesController < ApplicationController
 
-  @@basics = ['water', 'salt', 'pepper', 'olive oil', 'vegetable oil', 'flour', 'sugar']
 
   def search
     @ingredients = Ingredient.all
-    @search_terms = []
-    @pantry = @search_terms + @@basics
     render :search
   end
 
 
   def index
+    @basics = ['water', 'salt', 'pepper', 'olive oil', 'vegetable oil', 'flour', 'sugar']
     @ingredients = Ingredient.all
     @ingred_search = []
     if params[:ingredient] == nil
@@ -19,10 +17,17 @@ class RecipesController < ApplicationController
       return
     end
     param_ids = (params[:ingredient][:ingredient_index])
+    if current_user
+      p "Here is current user", current_user
+      current_user.ingredients.delete_all
+    end
     param_ids.each do |num|
       @ingred_search << Ingredient.find(num.to_i)
+      if current_user
+        current_user.ingredients << Ingredient.find(num.to_i)
+      end
     end
-    @recipes = get_recipes(@ingred_search, @@basics)
+    @recipes = get_recipes(@ingred_search, @basics)
     render :index
   end
 
