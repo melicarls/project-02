@@ -1,40 +1,48 @@
-<h5>Enter the food that you have on hand and we'll serve up some delicious recipes for you to try!</h5>
+<div class="search-ingredients" width=50%; float="left">
+    <h4 class="lead">Enter the food that you have on hand and we'll serve up some delicious recipes for you to try!</h5>
+</br>
 
-<div width=50%; float="left">
-  <h6>Select your foods:</h6>
-  <input type="text" class="live-search-box" placeholder="Type ingredient name" />
+<!-- Search Ingredient Form -->
+  <div class="text-xs-center">
+      <h6>Select your foods:</h6>
 
-  <% if current_user %>
-    <button type="button" id="savePantry" class="btn btn-info">Save Pantry</button>
-  <% end %>
+      <input type="text" class="live-search-box" placeholder="Type ingredient name"/>
+      <%= form_tag(recipes_path, method: "get") do %>
 
-  <button type="button" id="clearPantry" class="btn btn-warning">Clear Pantry</button>
-
-  <%= form_tag(recipes_path, method: "get") do %>
-
-
-  <%= submit_tag "Search", :class => "btn btn-success"%>
-  <ul class="live-search-list">
-    <% @ingredients.sort.each do |i| %>
-    <label>
-      <div class="ck-button">
-          <%= check_box_tag "ingredient[ingredient_index][]", i.id %>
-          <span><%= label_tag(i.name) %></span>
-      </div>
-    </label>
-    <% end %>
-  </ul>
-</div>
-
-<div id="pantry">
-  <h6>Your pantry:</h6>
-  <% @pantry.each do |item| %>
-  <div class="ck-button">
-    <label>
-      <span> <%= item %> </span>
-    </label>
+      <%= submit_tag "Search", :class => "btn btn-success"%>
   </div>
-  <% end %>
-</div>
+
+  <ul class="live-search-list">
+      <% @ingredients.sort.each do |i| %>
+      <label>
+          <div class="ck-button">
+              <%= check_box_tag "ingredient[ingredient_index][]", i.id %>
+              <span><%= label_tag(i.name) %></span>
+          </div>
+      </label>
+      <% end %>
+  </ul>
+
+<% if current_user %>
+<button type="button" id="savePantry" class="btn btn-info pull-xs-right">Save Pantry</button>
+<% end %>
+
+<button type="button" id="clearPantry" class="btn btn-warning pull-xs-right">Clear Pantry</button>
+</br>
+
+  <div id="pantry">
+    <h6>Your pantry:</h6>
+      <% @pantry.each do |item| %>
+      <div class="ck-button">
+          <label>
+            <span><%= item %></span>
+          </label>
+      </div>
+      <% end %>
+  </div>
 
 <% end %>
+</br>
+</br>
+
+</div>

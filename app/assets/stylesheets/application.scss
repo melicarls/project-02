@@ -54,7 +54,7 @@ label .ck-button span {
 
 .ck-button :checked + span {
     color:#219922;
-    border:1px solid red;
+    border:1px solid #219922;
     border-radius: 4px;
     height: 49px;
 }
@@ -68,7 +68,14 @@ label .ck-button span {
   visibility: hidden;
 }
 
-/* User sign in and sign forms. */
+.search-ingredients {
+  max-width: 2000px;
+  padding: 19px 29px 29px;
+  background-color: rgba(255, 255, 255, 0.5);
+
+}
+
+/* User sign in and sign out forms. */
 .border-form-div {
   max-width: 300px;
   padding: 19px 29px 29px;
