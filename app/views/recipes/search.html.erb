@@ -12,8 +12,8 @@
 
   <%= form_tag(recipes_path, method: "get") do %>
 
-  <%= submit_tag "Search", :class => "btn btn-success"%>
 
+  <%= submit_tag "Search", :class => "btn btn-success"%>
   <ul class="live-search-list">
     <% @ingredients.sort.each do |i| %>
     <label>
