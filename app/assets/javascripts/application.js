@@ -14,6 +14,7 @@
 //= require bootstrap-sprockets
 //= require jquery_ujs
 //= require_tree .
+
 $(document).on('ready', function(){
 
   // Filter search
@@ -29,6 +30,10 @@ $(document).on('ready', function(){
           $(this).hide();
       }
     });
+  });
+
+  $('#clearPantry').on('click', function(e) {
+    $('input:checkbox').attr('checked',false);
   });
 
 });
