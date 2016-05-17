@@ -5,11 +5,13 @@
   <input type="text" class="live-search-box" placeholder="Type ingredient name" />
   <%= form_tag(recipes_path, method: "get") do %>
   <ul class="live-search-list">
-    <% @ingredients.each do |i| %>
-    <li>
-      <%= check_box_tag "ingredient[ingredient_index][]", i.id%>
-      <button class="ingredient"><%= label_tag(i.name) %></button>
-    </li>
+    <% @ingredients.sort.each do |i| %>
+    <div class="ck-button">
+      <label>
+        <%= check_box_tag "ingredient[ingredient_index][]", i.id%>
+        <span><%= label_tag(i.name) %></span>
+      </label>
+    </div>
     <% end %>
   </ul>
 </div>
@@ -17,7 +19,11 @@
 <div>
   <h6>Your pantry:</h6>
   <% @pantry.each do |item| %>
-    <button class="ingredient"> <%= item %> </button>
+  <div class="ck-button">
+    <label>
+      <span> <%= item %> </span>
+    </label>
+  </div>
   <% end %>
 </div>
 
