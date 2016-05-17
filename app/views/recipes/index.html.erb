@@ -30,7 +30,7 @@
     <% else %>
       <p>You should have everything that you need to make <%= r.title %>. Bon appetit!</p>
     <% end %>
-    <p class="lead"><%= link_to "Visit Yummly to access full instructions", "http://#{r.directions}" %></p>
+    <p class="lead"><%= link_to "Visit Yummly to access full instructions", "http://#{r.directions}", target: "_blank" %></p>
   </div>
 </div>
 

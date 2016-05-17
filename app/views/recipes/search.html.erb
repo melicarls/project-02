@@ -12,11 +12,11 @@
     <label>
       <div class="ck-button">
         <% if current_user %>
-          <%= check_box_tag "ingredient[ingredient_index][]", i.id, current_user.ingredients.include?(i) %>
+          <%= check_box_tag i.id, current_user.ingredients.include?(i) %>
         <% else %>
-          <%= check_box_tag "ingredient[ingredient_index][]", i.id, false %>
+          <%= check_box_tag i.id, false %>
         <% end %>
-          <span><%= label_tag(i.name) %></span>
+          <span><%= label_tag(i.id, i.name) %></span>
       </div>
     </label>
     <% end %>

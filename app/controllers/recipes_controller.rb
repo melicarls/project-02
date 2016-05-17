@@ -16,12 +16,14 @@ class RecipesController < ApplicationController
       redirect_to search_recipes_path
       return
     end
-    param_ids = (params[:ingredient][:ingredient_index])
+    # Map this to avoid going through it multiple times
+    key_arr = params.keys
+    key_arr.delete_if { |k| k.to_i == 0}
     if current_user
       p "Here is current user", current_user
       current_user.ingredients.delete_all
     end
-    param_ids.each do |num|
+    key_arr.each do |num|
       @ingred_search << Ingredient.find(num.to_i)
       if current_user
         current_user.ingredients << Ingredient.find(num.to_i)
