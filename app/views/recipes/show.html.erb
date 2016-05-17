@@ -1,6 +1,12 @@
 
 <div class="card card-inverse text-xs-center">
 
+  <% if current_user %>
+    <button class="btn pull-right"><i class="fa fa-star" aria-hidden="true"></i>  Favorite</button>
+    </br>
+    </br>
+  <% end %>
+
   <h2><%= @recipe.title %></h2>
   <img src=" <%= @recipe.image %> "/>
 
@@ -21,7 +27,5 @@
       <%= @recipe.directions %>
     </p>
   <% end %>
-
-  <button class="btn"><i class="fa fa-star" aria-hidden="true"></i>  Favorite</button>
 
 </div>
