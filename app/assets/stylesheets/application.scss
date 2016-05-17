@@ -21,12 +21,13 @@ label .ck-button {
 
 label .ck-button span {
     text-align:center;
-    padding:4px 0px;
+    padding:3px 0px;
     display:block;
 }
 
 .ck-button :checked + span {
     color:red;
+    border:1px solid red;
 }
 
 .ck-button:hover {
