@@ -1,23 +1,27 @@
 
 <div class="card card-inverse text-xs-center">
+
   <h2><%= @recipe.title %></h2>
   <img src=" <%= @recipe.image %> "/>
 
-<h4>Provided by <%= @recipe.author %></h4>
-<h4>Ingredients:</h4>
+  <h4>Provided by <%= @recipe.author %></h4>
+  <h4>Ingredients:</h4>
 
-  <% @recipe.ingredients.each do |i| %>
-    <li><%= i.name.capitalize %></li>
+    <% @recipe.ingredients.each do |i| %>
+      <li><%= i.name.capitalize %></li>
+    <% end %>
+
+  <% if @recipe.directions.include?("yummly") %>
+    <h4>This recipe was sourced from Yummly! Please click here to
+      <%= link_to 'visit Yummly', "http://#{@recipe.directions}", :target => '_blank' %>
+      and access the full instructions.
+    </h4>
+  <% else %>
+    <p class="lead">
+      <%= @recipe.directions %>
+    </p>
   <% end %>
 
-<% if @recipe.directions.include?("yummly") %>
-  <h4>This recipe was sourced from Yummly! Please click here to
-    <%= link_to 'visit Yummly', "http://#{@recipe.directions}", :target => '_blank' %>
-    and access the full instructions.
-  </h4>
-<% else %>
-  <p class="lead">
-    <%= @recipe.directions %>
-  </p>
-<% end %>
+  <button class="btn"><i class="fa fa-star" aria-hidden="true"></i>  Favorite</button>
+
 </div>
