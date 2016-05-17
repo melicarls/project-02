@@ -14,14 +14,14 @@ body {
     float:left;
 }
 
-.ck-button label {
+label .ck-button {
     float:left;
     width:100px;
 }
 
-.ck-button label span {
+label .ck-button span {
     text-align:center;
-    padding:3px 0px;
+    padding:4px 0px;
     display:block;
 }
 
@@ -31,4 +31,9 @@ body {
 
 .ck-button:hover {
     background:lightyellow;
+}
+
+.ck-button input {
+  position: absolute;
+  visibility: hidden;
 }
