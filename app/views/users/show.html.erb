@@ -23,10 +23,17 @@
   <%= link_to "Edit Profile", edit_user_registration_path %>
 </div>
 
-<div class="starredRecipes col-md-6">
-  <% @user.recipes.each do |recipe| %>
-  <div>
-    <%= recipe.title %>
-  </div>
+<div class="starredRecipes col-md-5 col-md-offset-1">
+  <h4>Your favorite recipes</h4>
+  <% if @user.recipes.length == 0 %>
+    <p>
+      Ooops, there's nothing here! If you make something that you like and 'star' it, it will appear in this list. Better get cookin'!
+    </p>
+  <% else %>
+    <% @user.recipes.each do |recipe| %>
+    <div>
+      <%= recipe.title %>
+    </div>
+    <% end %>
   <% end %>
 </div>
