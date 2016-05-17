@@ -9,7 +9,7 @@
   <% end %>
 
   <button type="button" id="clearPantry" class="btn btn-warning">Clear Pantry</button>
-  
+
   <%= form_tag(recipes_path, method: "get") do %>
   <ul class="live-search-list">
     <% @ingredients.sort.each do |i| %>
