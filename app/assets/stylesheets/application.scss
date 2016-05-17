@@ -6,6 +6,10 @@
     color:#ffffff;
 }
 
+.navbar a:hover {
+  background-color: green;
+}
+
 body {
   background-image: image-url("veggies.jpeg");
   background-size: cover;
@@ -29,6 +33,7 @@ body {
 .card-inverse {
   padding: inherit;
   color: #219922;
+}
 
 .ck-button {
     margin:4px;
@@ -48,7 +53,7 @@ label .ck-button span {
 }
 
 .ck-button :checked + span {
-    color:red;
+    color:#219922;
     border:1px solid red;
     border-radius: 4px;
     height: 49px;

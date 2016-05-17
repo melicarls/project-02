@@ -20,6 +20,4 @@
     <%= @recipe.directions %>
   </p>
 <% end %>
-<%= button_to "Edit Recipe", edit_recipe_path(@recipe), method: :get, :class => 'btn btn-info' %>
-<%= button_to "Delete Recipe", "/recipes/#{@recipe.id}", method: :delete, :class => 'btn btn-danger' %>
 </div>
