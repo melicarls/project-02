@@ -10,17 +10,10 @@
   <ul class="live-search-list">
     <% @ingredients.sort.each do |i| %>
     <label>
-      <% if current_user.ingredients.include?(i) %>
-        <div class="ck-button">
-            <%= check_box_tag "ingredient[ingredient_index][]", i.id, :selected %>
-            <span><%= label_tag(i.name) %></span>
-        </div>
-      <% else %>
-        <div class="ck-button">
-            <%= check_box_tag "ingredient[ingredient_index][]", i.id %>
-            <span><%= label_tag(i.name) %></span>
-        </div>
-      <% end %>
+      <div class="ck-button">
+        <%= check_box_tag "ingredient[ingredient_index][]", i.id, current_user.ingredients.include?(i) %>
+          <span><%= label_tag(i.name) %></span>
+      </div>
     </label>
     <% end %>
   </ul>
