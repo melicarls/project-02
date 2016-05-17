@@ -16,7 +16,7 @@
   </ul>
 </div>
 
-<div>
+<div id="pantry">
   <h6>Your pantry:</h6>
   <% @pantry.each do |item| %>
   <div class="ck-button">
@@ -27,6 +27,5 @@
   <% end %>
 </div>
 
-
-<%= submit_tag "Search" %>
+<%= submit_tag "Search", :class => "btn" %>
 <% end %>

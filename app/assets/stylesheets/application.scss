@@ -17,6 +17,7 @@ body {
 label .ck-button {
     float:left;
     width:100px;
+    height: 50px;
 }
 
 label .ck-button span {
@@ -28,6 +29,8 @@ label .ck-button span {
 .ck-button :checked + span {
     color:red;
     border:1px solid red;
+    border-radius: 4px;
+    height: 49px;
 }
 
 .ck-button:hover {
