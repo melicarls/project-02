@@ -9,7 +9,7 @@ ingredients = Ingredient.create([
   {name: 'avocado'},
   {name: 'bacon'},
   {name: 'bagel'},
-  {name: 'balsamic'},
+  {name: 'balsamic vinegar'},
   {name: 'banana'},
   {name: 'barbeque sauce'},
   {name: 'beets'},

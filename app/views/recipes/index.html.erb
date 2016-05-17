@@ -23,6 +23,7 @@
     <% else %>
       <p>You should have everything that you need to make <%= r.title %>. Bon appetit!</p>
     <% end %>
+    <p class="lead"><%= link_to "Visit Yummly to access full instructions", "http://#{r.directions}" %></p>
   </div>
 </div>
 
