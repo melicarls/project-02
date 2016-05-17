@@ -74,6 +74,7 @@ ingredients = Ingredient.create([
   {name: 'onion'},
   {name: 'orange'},
   {name: 'panko'},
+  {name: 'parmesan'},
   {name: 'parsley'},
   {name: 'peach'},
   {name: 'peanut butter'},
