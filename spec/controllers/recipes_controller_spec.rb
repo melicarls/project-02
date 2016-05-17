@@ -17,6 +17,17 @@ RSpec.describe RecipesController, type: :controller do
     end
   end
 
+  describe "#new" do
+    before { get :new }
+
+    it "assigns @recipe" do
+      expect(assigns(:recipe)).to be_instance_of(Recipe)
+    end
+    it "renders the :new view" do
+      expect(response).to render_template(:new)
+    end
+  end
+
   describe "#create" do
     context "success" do
       let(:recipe_hash) {{title: "wonton soup", author: "jack sparrow", directions:"1. boil water 2. chop veggies"}}
@@ -49,4 +60,18 @@ RSpec.describe RecipesController, type: :controller do
       end
     end
   end
+
+  describe "#search" do
+    let!(:all_ingredients) {Ingredient.all}
+    before { get :search}
+
+    it "assigns @ingredients" do
+      expect(assigns(:ingredients)).to eq(all_ingredients)
+    end
+
+    it "renders the :search view" do
+      expect(response).to render_template(:search)
+    end
+  end
+
 end

@@ -46,7 +46,6 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-  gem 'zapata'
   gem 'factory_girl_rails'
   gem 'ffaker'
 end
