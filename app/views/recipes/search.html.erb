@@ -3,36 +3,36 @@
 <div width=50%; float="left">
   <h6>Select your foods:</h6>
   <input type="text" class="live-search-box" placeholder="Type ingredient name" />
+
+  <% if current_user %>
+    <button type="button" id="savePantry" class="btn btn-info">Save Pantry</button>
+  <% end %>
+
+  <button type="button" id="clearPantry" class="btn btn-warning">Clear Pantry</button>
+
   <%= form_tag(recipes_path, method: "get") do %>
   <ul class="live-search-list">
-    <% @ingredients.each do |i| %>
-    <li>
-      <%= check_box_tag "ingredient[ingredient_index][]", i.id%>
-      <%= label_tag(i.name) %>
-    </li>
+    <% @ingredients.sort.each do |i| %>
+    <label>
+      <div class="ck-button">
+          <%= check_box_tag "ingredient[ingredient_index][]", i.id %>
+          <span><%= label_tag(i.name) %></span>
+      </div>
+    </label>
     <% end %>
   </ul>
 </div>
 
-<button type="button" id="check_all" class="btn btn-info">
-    Check / Uncheck All
-</button>
-</br>
-</br>
-
-<div>
+<div id="pantry">
   <h6>Your pantry:</h6>
-  <ul>
-    <% @pantry.each do |item| %>
-    <li> <%= item %> </li>
-    <% end %>
-  </ul>
+  <% @pantry.each do |item| %>
+  <div class="ck-button">
+    <label>
+      <span> <%= item %> </span>
+    </label>
+  </div>
+  <% end %>
 </div>
 
-
-<%= submit_tag "Search", :class => 'btn btn-primary'%>
+<%= submit_tag "Search", :class => "btn" %>
 <% end %>
-
-<script type='text/javascript'>
-    $('#check_all').on("click", function(){ $('input[type="checkbox"]').click(); });
-</script>

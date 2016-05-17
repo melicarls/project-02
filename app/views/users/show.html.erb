@@ -1,3 +1,15 @@
+<% if @user.image.blank? %>
+  <%= image_tag "defaultprofile.jpg", :width => 250 %>
+<% else %>
+  <%= image_tag @user.image, :width => 250, :class => "img-circle" %>
+<% end %>
+
+<p>
+  First Name: <%= @user.first_name %>
+</p>
+<p>
+  Last Name: <%= @user.last_name %>
+</p>
 <p>
   Email address: <%= @user.email %>
 </p>
