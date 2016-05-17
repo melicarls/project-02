@@ -20,17 +20,24 @@ label .ck-button span {
     text-align:center;
     padding:3px 0px;
     display:block;
+    font-size: 14px;
+}
+
+.ck-button span {
+    color:inherit;
+    border:1px solid inherit;
+    border-radius: 4px;
+    height: 48px;
 }
 
 .ck-button :checked + span {
     color:red;
     border:1px solid red;
-    border-radius: 4px;
-    height: 49px;
 }
 
 .ck-button:hover {
     background:lightyellow;
+    cursor: pointer;
 }
 
 .ck-button input {
