@@ -32,4 +32,12 @@ $(document).on('ready', function(){
     });
   });
 
+  $('#clearPantry').on('click', function(e) {
+    $('input:checkbox').attr('checked',false);
+  });
+
+  $('#savePantry').on('click', function(e) {
+    alert("This doesn't work yet!");
+  });
+
 });
