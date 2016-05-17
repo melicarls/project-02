@@ -3,8 +3,13 @@
 <div width=50%; float="left">
   <h6>Select your foods:</h6>
   <input type="text" class="live-search-box" placeholder="Type ingredient name" />
-  <button type="button" id="savePantry" class="btn btn-info">Save Pantry</button>
+
+  <% if current_user %>
+    <button type="button" id="savePantry" class="btn btn-info">Save Pantry</button>
+  <% end %>
+
   <button type="button" id="clearPantry" class="btn btn-warning">Clear Pantry</button>
+  
   <%= form_tag(recipes_path, method: "get") do %>
   <ul class="live-search-list">
     <% @ingredients.sort.each do |i| %>
