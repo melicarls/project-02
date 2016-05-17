@@ -61,14 +61,15 @@ label .ck-button span {
 }
 
 .ck-button :checked + span {
-    color:#219922;
+    color:black;
     border:1px solid #219922;
+    background:#6EC04D;
     border-radius: 4px;
-    height: 49px;
+    height: 48px;
 }
 
 .ck-button:hover {
-    background:lightyellow;
+    background:#D2EEC8;
     cursor: pointer;
 }
 

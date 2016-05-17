@@ -17,19 +17,15 @@
     <label>
       <div class="ck-button">
         <% if current_user %>
-          <%= check_box_tag i.id, current_user.ingredients.include?(i) %>
+          <%= check_box_tag i.id, false, current_user.ingredients.include?(i) %>
         <% else %>
-          <%= check_box_tag i.id, false %>
+          <%= check_box_tag i.id, false, false %>
         <% end %>
-          <span><%= label_tag(i.id, i.name) %></span>
+          <span><%= label_tag(i.id, i.name.capitalize) %></span>
       </div>
     </label>
     <% end %>
   </ul>
-
-<% if current_user %>
-<button type="button" id="savePantry" class="btn btn-info pull-xs-right">Save Pantry</button>
-<% end %>
 
 <button type="button" id="clearPantry" class="btn btn-warning pull-xs-right">Clear Pantry</button>
 
