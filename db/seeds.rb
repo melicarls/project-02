@@ -27,6 +27,7 @@ ingredients = Ingredient.create([
   {name: 'bread'},
   {name: 'breadcrumbs'},
   {name: 'broccoli'},
+  {name: 'broth'},
   {name: 'brown sugar'},
   {name: 'butter'},
   {name: 'cabbage'},
