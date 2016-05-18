@@ -44,51 +44,6 @@ class RecipesController < ApplicationController
     end
   end
 
-  def new
-    if current_user
-      @ingredients = Ingredient.all
-      @recipe = Recipe.new
-      render :new
-    else
-      redirect_to search_recipes_path
-    end
-  end
-
-  def create
-    @recipe = Recipe.new(recipe_params)
-    @recipe.author = current_user.email
-    if @recipe.save
-      flash[:notice] = "Successfully created Recipe"
-      redirect_to recipe_path(@recipe)
-    else
-      flash[:error] = @recipe.errors.full_messages.join(", ")
-    end
-  end
-
-  def edit
-    @ingredients = Ingredient.all
-    @recipe = Recipe.find_by_id params[:id]
-    render :edit
-  end
-
-  def update
-    @recipe = Recipe.find_by_id params[:id]
-      if @recipe.update(recipe_params)
-        flash[:notice] = "Successfully updated Recipe"
-        redirect_to recipe_path
-      else
-        flash[:error] = @recipe.errors.full_messages.join(", ")
-      end
-  end
-
-
-  def destroy
-    recipe = Recipe.find_by_id(params[:id])
-    if recipe.destroy
-      redirect_to search_recipes_path
-    end
-  end
-
   def about
     render :about
   end
