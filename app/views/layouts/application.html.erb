@@ -21,7 +21,7 @@
     <li class="nav-item active pull-xs-right"> <%= link_to "About Us", about_path, :class => "nav-link" %> </li>
     <% if user_signed_in? %>
       <li class="nav-item active pull-xs-right"> <%= link_to "Log Out", destroy_user_session_path, method: :delete, :class => "nav-link" %> </li>
-      <li class="nav-item active pull-xs-right"> <%= link_to "Welcome, #{current_user.email}", user_path(current_user), :class => "nav-link" %> </li>
+      <li class="nav-item active pull-xs-right"> <%= link_to "Welcome #{current_user.first_name}!", user_path(current_user), :class => "nav-link" %> </li>
     <% else %>
       <li class="nav-item active pull-xs-right"><%= link_to "Sign Up", new_user_registration_path, :class => "nav-link" %></li>
       <li class="nav-item active pull-xs-right"><%= link_to "Log In", new_user_session_path, :class => "nav-link" %></li>
