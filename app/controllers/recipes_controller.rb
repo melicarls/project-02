@@ -1,28 +1,36 @@
 class RecipesController < ApplicationController
 
-  @@basics = ['water', 'salt', 'pepper', 'olive oil', 'vegetable oil', 'flour', 'sugar']
 
   def search
     @ingredients = Ingredient.all
-    @search_terms = []
-    @pantry = @search_terms + @@basics
     render :search
   end
 
 
   def index
+    @basics = ['water', 'salt', 'pepper', 'olive oil', 'vegetable oil', 'flour', 'sugar']
     @ingredients = Ingredient.all
     @ingred_search = []
-    if params[:ingredient] == nil
+
+    # Map this to avoid going through it multiple times
+    key_arr = params.keys
+    key_arr.delete_if { |k| k.to_i == 0}
+    if current_user
+      p "Here is current user", current_user
+      current_user.ingredients.delete_all
+    end
+    if key_arr == []
       flash[:error] = "Sorry, you can't make something out of nothing. Go grocery shopping and try again."
       redirect_to search_recipes_path
       return
     end
-    param_ids = (params[:ingredient][:ingredient_index])
-    param_ids.each do |num|
+    key_arr.each do |num|
       @ingred_search << Ingredient.find(num.to_i)
+      if current_user
+        current_user.ingredients << Ingredient.find(num.to_i)
+      end
     end
-    @recipes = get_recipes(@ingred_search, @@basics)
+    @recipes = get_recipes(@ingred_search, @basics)
     render :index
   end
 
@@ -32,13 +40,18 @@ class RecipesController < ApplicationController
   end
 
   def new
-    @ingredients = Ingredient.all
-    @recipe = Recipe.new
-    render :new
+    if current_user
+      @ingredients = Ingredient.all
+      @recipe = Recipe.new
+      render :new
+    else
+      redirect_to search_recipes_path
+    end
   end
 
   def create
     @recipe = Recipe.new(recipe_params)
+    @recipe.author = current_user.email
     if @recipe.save
       flash[:notice] = "Successfully created Recipe"
       redirect_to recipe_path(@recipe)
@@ -69,6 +82,10 @@ class RecipesController < ApplicationController
     if recipe.destroy
       redirect_to search_recipes_path
     end
+  end
+
+  def about
+    render :about
   end
 
 private

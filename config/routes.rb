@@ -18,9 +18,15 @@ Rails.application.routes.draw do
 
   resources :recipes
 
-  devise_for :users
+  devise_for :users, :controllers => {:registrations => "my_devise/registrations"}
 
   get '/users/:id', to: 'users#show', as: 'user'
+
+  post '/users/starred/:id', to: 'users#star', as: 'new_user_star'
+
+  delete '/users/starred/:id', to: 'users#removestar', as: 'delete_user_star'
+
+  get '/about', to: 'recipes#about', as: 'about'
 
 
 

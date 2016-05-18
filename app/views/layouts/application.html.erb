@@ -5,29 +5,41 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
+    <script>
+      UPLOADCARE_LOCALE = "en";
+      UPLOADCARE_TABS = "file url facebook gdrive dropbox instagram evernote flickr skydrive";
+      UPLOADCARE_PUBLIC_KEY = "455979360e896bd5ad2e";
+    </script>
+    <script charset="utf-8" src="//ucarecdn.com/widget/2.8.2/uploadcare/uploadcare.full.min.js"></script>
   </head>
 
   <body>
-  <ul>
+
+<nav class="navbar navbar-dark bg-inverse">
+  <ul class="nav navbar-nav">
+    <li class="nav-item active"> <%= link_to "**Our App name here**", root_path, :class => "nav-link" %> </li>
+    <li class="nav-item active pull-xs-right"> <%= link_to "About Us", about_path, :class => "nav-link" %> </li>
     <% if user_signed_in? %>
-      <li> <%= link_to "Log Out", destroy_user_session_path, method: :delete %> </li>
-      <li> <%= link_to "Edit Profile", edit_user_registration_path %> </li>
-      <li> <%= link_to "View Your Profile", user_path(current_user) %> </li>
+      <li class="nav-item active pull-xs-right"> <%= link_to "Log Out", destroy_user_session_path, method: :delete, :class => "nav-link" %> </li>
+      <li class="nav-item active pull-xs-right"> <%= link_to "Welcome #{current_user.first_name}!", user_path(current_user), :class => "nav-link" %> </li>
     <% else %>
-      <li><%= link_to "Sign Up", new_user_registration_path %></li>
-      <li><%= link_to "Log In", new_user_session_path %></li>
+      <li class="nav-item active pull-xs-right"><%= link_to "Sign Up", new_user_registration_path, :class => "nav-link" %></li>
+      <li class="nav-item active pull-xs-right"><%= link_to "Log In", new_user_session_path, :class => "nav-link" %></li>
     <% end %>
   </ul>
+</nav>
+
+</br>
+</br>
 
     <% flash.each do |type, message| %>
-      <div class="alert">
-        <%= message %>
-      </div>
-    <% end %>
-    <div class="container">
-      <%= yield %>
+    <div class="alert">
+      <%= message %>
     </div>
+    <% end %>
 
+    <div class="container">
+    <%= yield %>
+    </div>
   </body>
-
 </html>

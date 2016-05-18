@@ -1,29 +1,38 @@
-<%= button_to "Add a New Recipe", new_recipe_path, method: :get %>
+<div class="search-ingredients" width=50%; float="left">
+    <h4 class="lead">Enter the food that you have on hand and we'll serve up some delicious recipes for you to try!</h5>
+</br>
 
-<h5>Enter the food that you have on hand and we'll serve up some delicious recipes for you to try!</h5>
+<!-- Search Ingredient Form -->
+  <div class="text-xs-center">
+      <h6>Select your foods:</h6>
 
-<div width=50%; float="left">
-  <h6>Select your foods:</h6>
-  <%= form_tag(recipes_path, method: "get") do %>
-  <ul>
-    <% @ingredients.each do |i| %>
-    <li>
-      <%= check_box_tag "ingredient[ingredient_index][]", i.id%>
-      <%= label_tag(i.name) %>
-    </li>
-    <% end %>
-  </ul>
-</div>
+      <input type="text" class="live-search-box" placeholder="Type ingredient name"/>
+      <%= form_tag(recipes_path, method: "get") do %>
 
-<div>
-  <h6>Your pantry:</h6>
-  <ul>
-    <% @pantry.each do |item| %>
-    <li> <%= item %> </li>
-    <% end %>
-  </ul>
-</div>
+      <%= submit_tag "Search", :class => "btn btn-success"%>
+  </div>
 
+  <div id="allIngredients">
+    <ul class="live-search-list">
+      <% @ingredients.sort.each do |i| %>
+      <label>
+        <div class="ck-button">
+          <% if current_user %>
+            <%= check_box_tag i.id, false, current_user.ingredients.include?(i) %>
+          <% else %>
+            <%= check_box_tag i.id, false, false %>
+          <% end %>
+            <span><%= label_tag(i.id, i.name.capitalize) %></span>
+        </div>
+      </label>
+      <% end %>
+    </ul>
+  </div>
 
-<%= submit_tag "Search" %>
+<button type="button" id="clearPantry" class="btn btn-warning pull-xs-right">Clear Pantry</button>
+
 <% end %>
+</br>
+</br>
+
+</div>

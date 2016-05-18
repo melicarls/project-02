@@ -18,11 +18,12 @@ module RecipesHelper
       end
       # If there is an ingredient object and it's either never been searched or it was searched more than a month ago
       if ingredient && ( !(ingredient[:searched]) || (Time.now - ingredient[:last_searched]) > 2592000 )
-        p "An API call is about to be made!"
-        # Make sure to mark the ingredient as searched
+        p "An API call should have been made, but it's been disabled to reduce the number of calls in testing."
+        # p "An API call is about to be made!"
+        # # Make sure to mark the ingredient as searched
         Ingredient.find_by(name: ingredient.name).update({"searched": true, "last_searched": Time.now})
-        p "Now the searched status is:", Ingredient.find_by(name: ingredient.name)[:searched]
-        p "And last searched is:", Ingredient.find_by(name: ingredient.name)[:last_searched]
+        # p "Now the searched status is:", Ingredient.find_by(name: ingredient.name)[:searched]
+        # p "And last searched is:", Ingredient.find_by(name: ingredient.name)[:last_searched]
         # Get recipe results from Yummly
         output = search_yummly(ingredient[:name])
         output.each do |el|
