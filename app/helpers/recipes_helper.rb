@@ -2,7 +2,7 @@ module RecipesHelper
 
   require 'date'
 
-  def get_recipes(ingredient_arr, basics)
+  def get_recipes(ingredient_arr)
     p "Looking for recipes with these ingredients", ingredient_arr
     #Start with an empty array of potential recipes
     recipes_arr = []
@@ -46,15 +46,13 @@ module RecipesHelper
     end
     p "Here's the recipe array after checking all ingredients", recipes_arr
     # Return an array of the acceptable ingredients
-    get_acceptable_recipes(recipes_arr, ingredient_arr, basics)
+    get_acceptable_recipes(recipes_arr, ingredient_arr)
   end
 
 
-  def get_acceptable_recipes(recipes, ingredients, basics)
+  def get_acceptable_recipes(recipes, ingredients)
     recipe_options = []
     p "Each recipe's ingredients need to be in this array", ingredients
-    p "The basics are these", basics
-    ingredients = ingredients + basics
     recipes.each do |maybe_recipe|
       maybe_recipe.missing_ingredients = []
       p "Checking this recipe", maybe_recipe
