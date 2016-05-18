@@ -1,20 +1,16 @@
 
 <div class="card card-inverse text-xs-center">
 
-  <% if current_user %>
-    <%= button_to "Favorite Recipe", new_user_star_path, method: :post, class: :btn %>
-
-    </br>
-    </br>
+  <% if current_user && !current_user.recipes.include?(@recipe) %>
+    <%= button_to "Add to Favorites", new_user_star_path, method: :post, 'class' => 'btn pull-right' %>
+  <% elsif current_user && current_user.recipes.include?(@recipe) %>
+    <%= button_to "Remove from Favorites", delete_user_star_path(@recipe.id), method: :delete, 'class' => 'btn pull-right' %>
   <% end %>
 
-  <% if current_user %>
-    <%= button_to "Remove Favorite", delete_user_star_path(@recipe.id), method: :delete, class: :btn %>
-    </br>
-    </br>
-  <% end %>
+</br>
+</br>
 
-  <h2><%= @recipe.title %></h2>
+  <h2><%= @recipe.title.titleize %></h2>
   <img src=" <%= @recipe.image %> "/>
 
   <h4>Provided by <%= @recipe.author %></h4>
@@ -24,15 +20,10 @@
       <li><%= i.name.capitalize %></li>
     <% end %>
 
-  <% if @recipe.directions.include?("yummly") %>
-    <h4>This recipe was sourced from Yummly! Please click here to
+    <h4>This recipe was sourced from Yummly! </br>
+      Please click here to
       <%= link_to 'visit Yummly', "http://#{@recipe.directions}", :target => '_blank' %>
       and access the full instructions.
     </h4>
-  <% else %>
-    <p class="lead">
-      <%= @recipe.directions %>
-    </p>
-  <% end %>
 
 </div>
