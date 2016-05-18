@@ -24,14 +24,14 @@ module RecipesHelper
         Ingredient.find_by(name: ingredient.name).update({"searched": true, "last_searched": Time.now})
         # p "Now the searched status is:", Ingredient.find_by(name: ingredient.name)[:searched]
         # p "And last searched is:", Ingredient.find_by(name: ingredient.name)[:last_searched]
-        # # Get recipe results from Yummly
-        # output = search_yummly(ingredient[:name])
-        # output.each do |el|
-        #   # If the recipe isn't a duplicate from an earlier search, push it into options
-        #   if !recipes_arr.include?(el)
-        #     recipes_arr.push(el)
-        #   end
-        # end
+        # Get recipe results from Yummly
+        output = search_yummly(ingredient[:name])
+        output.each do |el|
+          # If the recipe isn't a duplicate from an earlier search, push it into options
+          if !recipes_arr.include?(el)
+            recipes_arr.push(el)
+          end
+        end
       else
         p "No need to search the API"
         # If there's an ingredient object and it's been searched recently, search the DB

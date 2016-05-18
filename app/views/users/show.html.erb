@@ -1,26 +1,39 @@
-<div class="border-form-div">
+<div class="border-form-div col-md-6">
+  <% if @user.image.blank? %>
+    <%= image_tag "defaultprofile.jpg", :width => 250 %>
+  <% else %>
+    <%= image_tag @user.image, :width => 250, :class => "img-circle" %>
+  <% end %>
 
-<% if @user.image.blank? %>
-  <%= image_tag "defaultprofile.jpg", :width => 250 %>
-<% else %>
-  <%= image_tag @user.image, :width => 250, :class => "img-circle" %>
-<% end %>
+  <p>
+    First Name: <%= @user.first_name %>
+  </p>
+  <p>
+    Last Name: <%= @user.last_name %>
+  </p>
+  <p>
+    Email address: <%= @user.email %>
+  </p>
+  <p>
+    Date joined: <%= @user.created_at.strftime("%m/%d/%Y") %>
+  </p>
+  <p>
+    Last seen: <%= time_ago_in_words(@user.last_sign_in_at) %> ago
+  </p>
+  <%= link_to "Edit Profile", edit_user_registration_path %>
+</div>
 
-<p>
-  First Name: <%= @user.first_name %>
-</p>
-<p>
-  Last Name: <%= @user.last_name %>
-</p>
-<p>
-  Email address: <%= @user.email %>
-</p>
-<p>
-  Date joined: <%= @user.created_at.strftime("%m/%d/%Y") %>
-</p>
-<p>
-  Last seen: <%= time_ago_in_words(@user.last_sign_in_at) %> ago
-</p>
-<%= link_to "Edit Profile", edit_user_registration_path %>
-
+<div class="starredRecipes col-md-5 col-md-offset-1">
+  <h4>Your favorite recipes</h4>
+  <% if @user.recipes.length == 0 %>
+    <p>
+      Ooops, there's nothing here! If you make something that you like and 'star' it, it will appear in this list. Better get cookin'!
+    </p>
+  <% else %>
+    <% @user.recipes.each do |recipe| %>
+    <div>
+      <%= recipe.title %>
+    </div>
+    <% end %>
+  <% end %>
 </div>

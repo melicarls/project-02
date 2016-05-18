@@ -12,24 +12,22 @@
       <%= submit_tag "Search", :class => "btn btn-success"%>
   </div>
 
-  <ul class="live-search-list">
-    <% @ingredients.sort.each do |i| %>
-    <label>
-      <div class="ck-button">
-        <% if current_user %>
-          <%= check_box_tag "ingredient[ingredient_index][]", i.id, current_user.ingredients.include?(i) %>
-        <% else %>
-          <%= check_box_tag "ingredient[ingredient_index][]", i.id, false %>
-        <% end %>
-          <span><%= label_tag(i.name) %></span>
-      </div>
-    </label>
-    <% end %>
-  </ul>
-
-<% if current_user %>
-<button type="button" id="savePantry" class="btn btn-info pull-xs-right">Save Pantry</button>
-<% end %>
+  <div id="allIngredients">
+    <ul class="live-search-list">
+      <% @ingredients.sort.each do |i| %>
+      <label>
+        <div class="ck-button">
+          <% if current_user %>
+            <%= check_box_tag i.id, false, current_user.ingredients.include?(i) %>
+          <% else %>
+            <%= check_box_tag i.id, false, false %>
+          <% end %>
+            <span><%= label_tag(i.id, i.name.capitalize) %></span>
+        </div>
+      </label>
+      <% end %>
+    </ul>
+  </div>
 
 <button type="button" id="clearPantry" class="btn btn-warning pull-xs-right">Clear Pantry</button>
 
