@@ -116,17 +116,12 @@ module RecipesHelper
   end
 
   def sanitize_ingredient(ingredient)
-    if ingredient.contain?('penne') || ingredient.contain?('spaghetti') || ingredient.contain?('fettuccini') || ingredient.contain?('rigatoni') || ingredient.contain?('farfalle') || ingredient.contain?('linguini')
+    if ingredient.include?('penne') || ingredient.include?('spaghetti') || ingredient.include?('fettuccini') || ingredient.include?('rigatoni') || ingredient.include?('farfalle') || ingredient.include?('linguini')
       return 'pasta'
-    elsif
-
-    elsif
-
     elsif ingredient.pluralize == ingredient
-      return ingredient.singularize
-    else
-      return ingredient
+      ingredient = ingredient.singularize
     end
+    ingredient
   end
 
 end
