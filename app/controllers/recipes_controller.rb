@@ -36,7 +36,12 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find_by_id params[:id]
-    render :show
+    if !@recipe
+      flash[:error] = "Sorry, we can't find that recipe. Search for another one below!"
+      redirect_to search_recipes_path
+    else
+      render :show
+    end
   end
 
   def new
