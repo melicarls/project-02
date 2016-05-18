@@ -20,7 +20,9 @@
   <p>
     Last seen: <%= time_ago_in_words(@user.last_sign_in_at) %> ago
   </p>
+  <% if current_user && current_user == @user %>
   <%= link_to "Edit Profile", edit_user_registration_path %>
+  <% end %>
 </div>
 
 <div class="starredRecipes col-md-5 col-md-offset-1">
