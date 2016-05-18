@@ -99,8 +99,9 @@ module RecipesHelper
                         directions: "www.yummly.com/recipe/"+result["id"]})
         # Go through all of the result ingredients
           result["ingredients"].each do |ingred|
+        # Sanitize the ingredient name, making it more likely that there will be a match for it in our db
         # If we have an ingredient object for it, link that ingredient to the recipe
-            temp_i = Ingredient.find_by(name: ingred)
+            temp_i = Ingredient.find_by(name: sanitize_ingredient(ingred))
             if temp_i
               temp.ingredients.push(temp_i)
             end
@@ -112,6 +113,10 @@ module RecipesHelper
       end
       # Return an array of recipe objects containing the searched ingredient
       maybe_recipes
+  end
+
+  def sanitize_ingredient(ingredient)
+    ingredient
   end
 
 end
