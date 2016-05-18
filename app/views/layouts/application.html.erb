@@ -15,74 +15,75 @@
 
   <body>
 
-<nav class="navbar navbar-dark bg-inverse">
-  <ul class="nav navbar-nav">
-    <li class="nav-item active"> <%= link_to "Pantry Hero", root_path, :class => "nav-link", :style=>'font-family: Monaco; font-size: 20px;' %> </li>
-    <li class="nav-item active pull-xs-right"> <%= link_to "About Us", about_path, :class => "nav-link" %> </li>
-    <% if user_signed_in? %>
-      <li class="nav-item active pull-xs-right"> <%= link_to "Log Out", destroy_user_session_path, method: :delete, :class => "nav-link" %> </li>
-      <li class="nav-item active pull-xs-right"> <%= link_to "Welcome #{current_user.first_name}!", user_path(current_user), :class => "nav-link" %> </li>
-    <% else %>
-      <li class="nav-item active pull-xs-right"><%= link_to "Sign Up", new_user_registration_path, :class => "nav-link" %></li>
-      <li class="nav-item active pull-xs-right"><%= link_to "Log In", new_user_session_path, :class => "nav-link" %></li>
-    <% end %>
-  </ul>
-</nav>
+    <nav class="navbar navbar-dark bg-inverse">
+      <ul class="nav navbar-nav">
+        <li class="nav-item active"> <%= link_to "Pantry Hero", root_path, :class => "nav-link", :style=>'font-family: Monaco; font-size: 20px;' %> </li>
+        <li class="nav-item active pull-xs-right"> <%= link_to "About Us", about_path, :class => "nav-link" %> </li>
+        <% if user_signed_in? %>
+          <li class="nav-item active pull-xs-right"> <%= link_to "Log Out", destroy_user_session_path, method: :delete, :class => "nav-link" %> </li>
+          <li class="nav-item active pull-xs-right"> <%= link_to "Welcome #{current_user.first_name}!", user_path(current_user), :class => "nav-link" %> </li>
+        <% else %>
+          <li class="nav-item active pull-xs-right"><%= link_to "Sign Up", new_user_registration_path, :class => "nav-link" %></li>
+          <li class="nav-item active pull-xs-right"><%= link_to "Log In", new_user_session_path, :class => "nav-link" %></li>
+        <% end %>
+      </ul>
+    </nav>
 
-</br>
+    </br>
 
-<!-- Toggles About Block -->
-     <button id="how-it-works-btn" class="btn btn-lg" role="button" data-toggle="collapse" href="#collapsible-about" aria-expanded="false" aria-controls="collapsible-about">
-         How does this work? <i class="fa fa-arrow-circle-down" aria-hidden="true"></i></span>
-     </button>
- </br>
- </br>
+    <!-- Toggles About Block -->
+         <button id="how-it-works-btn" class="btn btn-lg" role="button" data-toggle="collapse" href="#collapsible-about" aria-expanded="false" aria-controls="collapsible-about">
+             How does this work? <i class="fa fa-arrow-circle-down" aria-hidden="true"></i></span>
+         </button>
+     </br>
+     </br>
 
-<!-- Collapsible About block-->
-<div class="row collapse" id="collapsible-about">
+    <!-- Collapsible About block-->
+    <div class="row collapse" id="collapsible-about">
+      <div class="well col-sm-10 col-sm-offset-1">
+        <legend></legend>
 
-  <div class="well col-sm-10 col-sm-offset-1">
-    <legend></legend>
+        <div class="col-sm-4 about-block">
+          <div class="col-sm-12">
+            <h3>Check for Ingredients! <i class="fa fa-check-circle" aria-hidden="true"></i></h3>
+            <p> Use the search bar to look for ingredients or scroll and find what you have. Check on ingredients by clicking on them.</p>
+          </div>
+        </div>
 
-    <div class="col-sm-4 about-block">
-      <div class="col-sm-12">
-        <h3>Check for Ingredients! <i class="fa fa-check-circle" aria-hidden="true"></i></h3>
-        <p> Use the search bar to look for ingredients or scroll and find what you have. Check on ingredients by clicking on them.</p>
+        <div class="col-sm-4 about-block">
+          <div class="col-sm-12">
+            <h3> Search! <i class="fa fa-search" aria-hidden="true"></i> </h3>
+            <p> Click search and look over Recipes brought to you by Yummly! </p>
+          </div>
+        </div>
+
+        <div class="col-sm-4 about-block" >
+          <div class="col-sm-12">
+            <h3> Sign Up! <i class="fa fa-sign-in" aria-hidden="true"></i> </h3>
+            <p> Users who <%= link_to "Sign Up", new_user_registration_path %> can save their searches and favorite recipes! </p>
+          </div>
+          <br>
+        </div>
       </div>
     </div>
 
-    <div class="col-sm-4 about-block">
-      <div class="col-sm-12">
-        <h3> Search! <i class="fa fa-search" aria-hidden="true"></i> </h3>
-        <p> Click search and look over Recipes brought to you by Yummly! </p>
-      </div>
-    </div>
-
-    <div class="col-sm-4 about-block" >
-      <div class="col-sm-12">
-        <h3> Sign Up! <i class="fa fa-sign-in" aria-hidden="true"></i> </h3>
-        <p> Users who <%= link_to "Sign Up", new_user_registration_path %> can save their searches and favorite recipes! </p>
-      </div>
-      <br>
-    </div>
-  </div>
-
-</div>
-
-    <% flash.each do |type, message| %>
-    <div class="alert">
-      <%= message %>
-    </div>
-    <% end %>
 
     <div class="container">
-    <%= yield %>
+
+      <% flash.each do |type, message| %>
+      <div class="alert <%= bootstrap_class_for(type) %> fade in">
+        <button class="close" data-dismiss="alert">×</button>
+        <%= message %>
+      </div>
+      <% end %>
+      
+      <%= yield %>
     </div>
 
     <div id="footer" class="col-xs-12">
       <span>PantryHero | Created by Melissa Carlson, Lotus Quach, and Franklin Zuniga </span>
       <span class="pull-right">
-        Powered by <a href="http://www.yummly.com" target="_blank"> <%= image_tag('yummly.png', :alt=> 'yummly logo', :id => 'yummly')  %> </a> | 
+        Powered by <a href="http://www.yummly.com" target="_blank"> <%= image_tag('yummly.png', :alt=> 'yummly logo', :id => 'yummly')  %> </a> |
         View this project on <a href="">GitHub <i class="fa fa-github" aria-hidden="true"></i></a>
       </span>
     </div>

@@ -8,7 +8,6 @@ class RecipesController < ApplicationController
 
 
   def index
-    @basics = ['water', 'salt', 'pepper', 'olive oil', 'vegetable oil', 'flour', 'sugar']
     @ingredients = Ingredient.all
     @ingred_search = []
 
@@ -30,7 +29,7 @@ class RecipesController < ApplicationController
         current_user.ingredients << Ingredient.find(num.to_i)
       end
     end
-    @recipes = get_recipes(@ingred_search, @basics)
+    @recipes = get_recipes(@ingred_search)
     render :index
   end
 
