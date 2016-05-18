@@ -34,4 +34,8 @@ RSpec.describe RecipesController, type: :controller do
     end
   end
 
+  describe "#index" do
+    
+  end
+
 end
