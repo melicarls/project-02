@@ -3,10 +3,10 @@
 
 ## Description
 ## User Stories
-User Stories on Trello: https://trello.com/b/PD3UBg6N/project-planning)
-## Link to Heroku
+Trello: https://trello.com/b/PD3UBg6N/project-planning)
+## Project Link
 https://project-02.herokuapp.com/
-## Technologies
+## Technologies Used
   * Ruby on Rails
   * HTML5
   * CSS
@@ -19,6 +19,7 @@ https://project-02.herokuapp.com/
   * Rspec
   * HTTParty
   * jQuery
+  
 ## Future Development
 ## Contributors
   * Melissa Carlson: https://github.com/melicarls
