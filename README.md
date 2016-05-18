@@ -22,6 +22,7 @@ https://project-02.herokuapp.com/
   * Recipe ratings
   * Searching by dietary restrictions
   * Link to buy missing ingredients
+  
 ## Contributors
   * Melissa Carlson: https://github.com/melicarls
   * Lotus Quach: https://github.com/lsquach
