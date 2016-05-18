@@ -127,7 +127,16 @@ label .ck-button span {
 .starredRecipes {
 	background: white;
 	border-radius: 5px;
-	padding-top: 5px;
+	padding-top: 8px;
+}
+
+#searchTerms {
+	-webkit-column-count: 3;
+		-moz-column-count: 3;
+					column-count: 3;
+	list-style: none;
+	background: #fff;
+	border-radius: 5px;
 }
 
 #how-it-works-btn {
