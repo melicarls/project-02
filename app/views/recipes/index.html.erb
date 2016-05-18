@@ -19,7 +19,6 @@
     <img class="card-img-top" src='<%= r.image %>'>
     <div class="card-block">
     <h3 class="card-text">By <%= r.author %></h3>
-    <p class="lead"> <%= truncate(r.directions, length:500) {link_to "View More", recipe_path(r)} %> </p>
     <% if r.missing_ingredients.length > 0 %>
     <hr />
       <h6>You're missing:</h6>
