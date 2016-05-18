@@ -101,12 +101,14 @@ module RecipesHelper
           result["ingredients"].each do |ingred|
         # Sanitize the ingredient name, making it more likely that there will be a match for it in our db
         # If we have an ingredient object for it, link that ingredient to the recipe
+        p "Here's the string that will be used to search for canon", sanitize_ingredient(ingred)
             temp_i = Ingredient.find_by(name: sanitize_ingredient(ingred))
             if temp_i
               temp.ingredients.push(temp_i)
             end
           end
           # Save the recipe and push it into the array of options to be returned
+          p "Here's the array associated with the recipe that's about the be saved", temp.ingredients
           temp.save
           maybe_recipes << temp
         end
