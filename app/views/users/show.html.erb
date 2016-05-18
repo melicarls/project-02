@@ -26,16 +26,18 @@
 </div>
 
 <div class="starredRecipes col-md-5 col-md-offset-1">
-  <h4>Your favorite recipes</h4>
+  <h3>Your favorite recipes</h3>
   <% if @user.recipes.length == 0 %>
     <p>
       Ooops, there's nothing here! If you make something that you like and 'star' it, it will appear in this list. Better get cookin'!
     </p>
   <% else %>
     <% @user.recipes.each do |recipe| %>
+    <hr />
     <div>
-      <%= recipe.title %>
+      <%= link_to recipe.titleize.title, recipe_path(recipe) %>
     </div>
     <% end %>
+    <br />
   <% end %>
 </div>
