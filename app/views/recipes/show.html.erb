@@ -2,7 +2,8 @@
 <div class="card card-inverse text-xs-center">
 
   <% if current_user %>
-    <button class="btn pull-right"><i class="fa fa-star" aria-hidden="true"></i>  Favorite</button>
+    <%= button_to "Favorite Recipe", new_user_star_path, method: :post %>
+
     </br>
     </br>
   <% end %>
