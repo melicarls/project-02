@@ -1,4 +1,4 @@
-
+@import "font-awesome";
 @import "bootstrap";
 
 .navbar {
@@ -61,14 +61,15 @@ label .ck-button span {
 }
 
 .ck-button :checked + span {
-    color:#219922;
+    color:black;
     border:1px solid #219922;
+    background:#6EC04D;
     border-radius: 4px;
-    height: 49px;
+    height: 48px;
 }
 
 .ck-button:hover {
-    background:lightyellow;
+    background:#D2EEC8;
     cursor: pointer;
 }
 
@@ -109,4 +110,22 @@ label .ck-button span {
   height: auto;
   margin-bottom: 15px;
   padding: 7px 9px;
+}
+
+.border-form-div-edit {
+	max-width: 800px;
+	padding: 19px 29px 29px;
+	margin: 0 auto 20px;
+	background-color: #fff;
+	border: 1px solid #e5e5e5;
+}
+#allIngredients {
+	max-height: 60vh;
+	overflow: scroll;
+}
+
+.starredRecipes {
+	background: white;
+	border-radius: 5px;
+	padding-top: 5px;
 }
