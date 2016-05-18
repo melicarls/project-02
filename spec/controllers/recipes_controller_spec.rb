@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe RecipesController, type: :controller do
+  let(:signed_in_user) { User.create ({email:'test@test.com'})}
+  before do
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(signed_in_user)
+  end
   describe "#show" do
     let(:recipe) {Recipe.create({title:'fried rice', author:'john smith', directions:'1. chop veggies 2. make rice'}) }
 
@@ -18,6 +22,7 @@ RSpec.describe RecipesController, type: :controller do
   end
 
   describe "#new" do
+
     before { get :new }
 
     it "assigns @recipe" do
@@ -71,6 +76,24 @@ RSpec.describe RecipesController, type: :controller do
 
     it "renders the :search view" do
       expect(response).to render_template(:search)
+    end
+  end
+
+  describe "#destroy" do
+    let(:recipe_hash) {{title: "wonton soup", author: "jack sparrow", directions:"1. boil water 2. chop veggies"}}
+    let!(:recipes_count) {Recipe.count}
+
+    before do
+      delete :destroy, recipe: recipe_hash
+    end
+
+    it "removes the recipe from the db" do
+      expect(Recipe.count).to eq(recipes_count - 1)
+    end
+
+    it "redirects to 'root_path'" do
+      expect(response.status).to be(302)
+      expect(response).to redirect_to(root_path)
     end
   end
 

@@ -1,7 +1,6 @@
 require 'rails_helper'
 
-describe User do
-  let(:user) do
-    User.new
-  end
-end
+# RSpec.describe User, type: :model do
+#    subject(:user) { FactoryGirl.create(:user) }
+#
+#  end
