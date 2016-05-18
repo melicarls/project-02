@@ -163,3 +163,18 @@ a {
 	font-weight: bold;
 	color: inherit;
 }
+
+#how-it-works-btn {
+  border: none;
+  background-color: rgba(33, 153, 34, 0.6);
+  color: rgba(255, 255, 255, 0.8);
+  font-family: 'Didact Gothic', sans-serif;
+  letter-spacing: 0.1em;
+}
+
+#collapsible-about {
+	background-color: rgba(33, 153, 34, 0.6);
+	color: rgba(255, 255, 255, 1);
+	max-width: 1000px;
+	margin: 0 auto 10px;
+}
