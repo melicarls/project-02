@@ -5,13 +5,11 @@
 <% end %>
 
 <h5>You're viewing results for the following ingredients:</h5>
-<ul>
+<p>
   <% @ingred_search.each do |ing| %>
-  <li>
     <%= ing.name %>
-  </li>
   <% end %>
-</ul>
+</p>
 
 <% @recipes.sort {|a,b| a.missing_ingredients <=> b.missing_ingredients}.each do |r| %>
   <div class="card col-md-6" id="recipes">
