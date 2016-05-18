@@ -15,7 +15,7 @@
 
 <% @recipes.sort {|a,b| a.missing_ingredients <=> b.missing_ingredients}.each do |r| %>
   <div class="card col-md-6" id="recipes">
-    <h1 class="card-title"><%= link_to "#{r.title}", recipe_path(r) %></h1>
+    <h1 class="card-title"><%= link_to "#{r.title.titleize}", recipe_path(r) %></h1>
     <img class="card-img-top" src='<%= r.image %>'>
     <div class="card-block">
     <h3 class="card-text">By <%= r.author %></h3>
