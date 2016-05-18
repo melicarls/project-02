@@ -24,15 +24,9 @@
       <li><%= i.name.capitalize %></li>
     <% end %>
 
-  <% if @recipe.directions.include?("yummly") %>
     <h4>This recipe was sourced from Yummly! Please click here to
       <%= link_to 'visit Yummly', "http://#{@recipe.directions}", :target => '_blank' %>
       and access the full instructions.
     </h4>
-  <% else %>
-    <p class="lead">
-      <%= @recipe.directions %>
-    </p>
-  <% end %>
 
 </div>
