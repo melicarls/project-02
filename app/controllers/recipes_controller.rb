@@ -15,14 +15,14 @@ class RecipesController < ApplicationController
     # Map this to avoid going through it multiple times
     key_arr = params.keys
     key_arr.delete_if { |k| k.to_i == 0}
-    if current_user
-      p "Here is current user", current_user
-      current_user.ingredients.delete_all
-    end
     if key_arr == []
       flash[:error] = "Sorry, you can't make something out of nothing. Go grocery shopping and try again."
       redirect_to search_recipes_path
       return
+    end
+    if current_user
+      p "Here is current user", current_user
+      current_user.ingredients.delete_all
     end
     key_arr.each do |num|
       @ingred_search << Ingredient.find(num.to_i)

@@ -18,12 +18,11 @@ module RecipesHelper
       end
       # If there is an ingredient object and it's either never been searched or it was searched more than a month ago
       if ingredient && ( !(ingredient[:searched]) || (Time.now - ingredient[:last_searched]) > 2592000 )
-        p "An API call should have been made, but it's been disabled to reduce the number of calls in testing."
-        # p "An API call is about to be made!"
+        p "An API call is about to be made!"
         # # Make sure to mark the ingredient as searched
         Ingredient.find_by(name: ingredient.name).update({"searched": true, "last_searched": Time.now})
-        # p "Now the searched status is:", Ingredient.find_by(name: ingredient.name)[:searched]
-        # p "And last searched is:", Ingredient.find_by(name: ingredient.name)[:last_searched]
+        p "Now the searched status is:", Ingredient.find_by(name: ingredient.name)[:searched]
+        p "And last searched is:", Ingredient.find_by(name: ingredient.name)[:last_searched]
         # Get recipe results from Yummly
         output = search_yummly(ingredient[:name])
         output.each do |el|
@@ -100,19 +99,31 @@ module RecipesHelper
                         directions: "www.yummly.com/recipe/"+result["id"]})
         # Go through all of the result ingredients
           result["ingredients"].each do |ingred|
+        # Sanitize the ingredient name, making it more likely that there will be a match for it in our db
         # If we have an ingredient object for it, link that ingredient to the recipe
-            temp_i = Ingredient.find_by(name: ingred)
+        p "Here's the string that will be used to search for canon", sanitize_ingredient(ingred)
+            temp_i = Ingredient.find_by(name: sanitize_ingredient(ingred))
             if temp_i
               temp.ingredients.push(temp_i)
             end
           end
           # Save the recipe and push it into the array of options to be returned
+          p "Here's the array associated with the recipe that's about the be saved", temp.ingredients
           temp.save
           maybe_recipes << temp
         end
       end
       # Return an array of recipe objects containing the searched ingredient
       maybe_recipes
+  end
+
+  def sanitize_ingredient(ingredient)
+    if ingredient.include?('penne') || ingredient.include?('spaghetti') || ingredient.include?('fettuccini') || ingredient.include?('rigatoni') || ingredient.include?('farfalle') || ingredient.include?('linguini')
+      return 'pasta'
+    elsif ingredient.pluralize == ingredient
+      ingredient = ingredient.singularize
+    end
+    ingredient
   end
 
 end
