@@ -3,7 +3,7 @@
 
 .navbar {
 	background-color:#219922;
-    color:#ffffff;
+  color:#ffffff;
 }
 
 .navbar a:hover {
@@ -82,7 +82,7 @@ label .ck-button span {
   max-width: 2000px;
   padding: 19px 29px 29px;
   background-color: rgba(255, 255, 255, 0.5);
-
+	border-radius: 5px;
 }
 
 /* User sign in and sign out forms. */
@@ -119,24 +119,25 @@ label .ck-button span {
 	background-color: #fff;
 	border: 1px solid #e5e5e5;
 }
+
 #allIngredients {
 	max-height: 60vh;
 	overflow: scroll;
 }
 
 .starredRecipes {
-	background: white;
+	background: rgba(255, 255, 255, 0.5);
 	border-radius: 5px;
 	padding-top: 8px;
 }
 
 #searchTerms {
-	-webkit-column-count: 3;
-		-moz-column-count: 3;
-					column-count: 3;
 	list-style: none;
-	background: #fff;
 	border-radius: 5px;
+	-webkit-column-count: 3;
+		 -moz-column-count: 3;
+					column-count: 3;
+	background: rgba(255, 255, 255, 0.5);
 }
 
 #appeal {
@@ -147,6 +148,7 @@ label .ck-button span {
 }
 
 #footer {
-	margin-top: 30px;
+	margin-top: 50px;
 	color: white;
+	margin: 0 5px;
 }
