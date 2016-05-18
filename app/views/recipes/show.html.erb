@@ -2,8 +2,14 @@
 <div class="card card-inverse text-xs-center">
 
   <% if current_user %>
-    <%= button_to "Favorite Recipe", new_user_star_path, method: :post %>
+    <%= button_to "Favorite Recipe", new_user_star_path, method: :post, class: :btn %>
 
+    </br>
+    </br>
+  <% end %>
+
+  <% if current_user %>
+    <%= button_to "Remove Favorite", delete_user_star_path(@recipe.id), method: :delete, class: :btn %>
     </br>
     </br>
   <% end %>
