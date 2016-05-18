@@ -17,4 +17,6 @@ class Recipe < ActiveRecord::Base
   }
   validates :title, presence: true
   validates :author, presence: true
+  validates :directions, presence: true
+
 end
