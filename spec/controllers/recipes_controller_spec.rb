@@ -52,7 +52,7 @@ RSpec.describe RecipesController, type: :controller do
     end
 
     context "failed validations" do
-      let(:recipe_hash) {{ title: "sushi", author: "jerry springer", description: nil}}
+      let(:recipe_hash) {{ title: "sushi", author: "jerry springer", directions: nil}}
       before do
         post :create, recipe: recipe_hash
       end
