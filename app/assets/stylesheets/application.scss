@@ -3,7 +3,7 @@
 
 .navbar {
 	background-color:#219922;
-    color:#ffffff;
+  color:#ffffff;
 }
 
 .navbar a:hover {
@@ -82,7 +82,7 @@ label .ck-button span {
   max-width: 2000px;
   padding: 19px 29px 29px;
   background-color: rgba(255, 255, 255, 0.5);
-
+	border-radius: 5px;
 }
 
 /* User sign in and sign out forms. */
@@ -119,24 +119,53 @@ label .ck-button span {
 	background-color: #fff;
 	border: 1px solid #e5e5e5;
 }
+
 #allIngredients {
 	max-height: 60vh;
 	overflow: scroll;
 }
 
 .starredRecipes {
-	background: white;
+	background: rgba(255, 255, 255, 0.5);
 	border-radius: 5px;
 	padding-top: 8px;
 }
 
 #searchTerms {
-	-webkit-column-count: 3;
-		-moz-column-count: 3;
-					column-count: 3;
 	list-style: none;
+	border-radius: 5px;
+	-webkit-column-count: 3;
+		 -moz-column-count: 3;
+					column-count: 3;
+	background: rgba(255, 255, 255, 0.5);
+}
+
+#appeal {
+	margin-top: 20px;
 	background: #fff;
 	border-radius: 5px;
+	padding: 2px;
+}
+
+.profile {
+	border-radius: 5px;
+	margin-top: 5px;
+	width: 250px;
+}
+
+#footer {
+	margin: 50px 5px 0px;
+	color: white;
+}
+
+a {
+	text-decoration: none;
+	font-weight: bold;
+	color: inherit;
+}
+
+nav a {
+	font-weight: normal;
 }
 
 #how-it-works-btn {
@@ -145,6 +174,7 @@ label .ck-button span {
   color: rgba(255, 255, 255, 0.8);
   font-family: 'Didact Gothic', sans-serif;
   letter-spacing: 0.1em;
+	margin: 5px;
 }
 
 #collapsible-about {
@@ -152,4 +182,9 @@ label .ck-button span {
 	color: rgba(255, 255, 255, 1);
 	max-width: 1000px;
 	margin: 0 auto 10px;
+	border-radius: 5px;
+}
+
+#yummly	{
+	height: 20px;
 }
