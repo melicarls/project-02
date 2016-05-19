@@ -1,5 +1,6 @@
 @import "font-awesome";
 @import "bootstrap";
+@import url(https://fonts.googleapis.com/css?family=Oleo+Script:700);
 
 .navbar {
 	background-color:#219922;
@@ -93,8 +94,7 @@ label .ck-button span {
   max-width: 300px;
   padding: 19px 29px 29px;
   margin: 0 auto 20px;
-  background-color: #fff;
-  border: 1px solid #e5e5e5;
+  background-color: rgba(255, 255, 255, 0.5);
   -webkit-border-radius: 5px;
      -moz-border-radius: 5px;
           border-radius: 5px;
@@ -119,7 +119,7 @@ label .ck-button span {
 	max-width: 800px;
 	padding: 19px 29px 29px;
 	margin: 0 auto 20px;
-	background-color: #fff;
+	background-color: rgba(255, 255, 255, 0.5);
 	border: 1px solid #e5e5e5;
 }
 
@@ -189,6 +189,14 @@ nav a {
 
 #yummly	{
 	height: 20px;
+}
+
+#user-profile{
+	font-family: 'Didact Gothic', sans-serif;
+}
+
+.form-titles{
+	font-family: 'Oleo Script', cursive;
 }
 
 .btn {
