@@ -46,11 +46,11 @@ RSpec.describe RecipesController, type: :controller do
       expect(response).to redirect_to(search_recipes_path)
     end
 
-    #Don't run this until get_recipes takes only one array of ingredients, the ones user has chosen.
-    # it "returns recipe(s) when given an ingredient"
-    #   #we are calling get_recipes instead of :recipe because it expects an array of ingredients.
-    #   expect(get_recipes(Ingredient.all).length).to eq(1)
-    # end
+  #   #Don't run this until get_recipes takes only one array of ingredients, the ones user has chosen.
+  #   it "returns recipe(s) when given an ingredient" do
+  #     #we are calling get_recipes instead of :recipe because it expects an array of ingredients.
+  #     expect(get_recipes(Ingredient.all).length).to eq(1)
+  #   end
   end
 
 end
