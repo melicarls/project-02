@@ -17,14 +17,17 @@ body {
   font-family:sans-serif;
 }
 
-#recipes {
+.recipes {
   padding: 20px;
-  margin-left: auto;
+	margin: 30px;
+	height: 680px;
+	background: rgba(255, 255, 255, 0.8);
+	overflow: hidden;
 }
 
-#recipes img {
-  height: 300px;
-  width: auto;
+.recipes img {
+  width: 70%;
+	margin-left: 15%;
 }
 
 .jumbotron img {
@@ -121,7 +124,7 @@ label .ck-button span {
 }
 
 #allIngredients {
-	max-height: 60vh;
+	max-height: 380px;
 	overflow: scroll;
 }
 
@@ -137,7 +140,6 @@ label .ck-button span {
 	-webkit-column-count: 3;
 		 -moz-column-count: 3;
 					column-count: 3;
-	background: rgba(255, 255, 255, 0.5);
 }
 
 #appeal {
@@ -195,4 +197,20 @@ nav a {
 
 .form-titles{
 	font-family: 'Oleo Script', cursive;
+}
+
+.btn {
+	margin-left: 5px;
+}
+
+#indexText {
+	border-radius: 5px;
+	padding: 3px;
+	margin-bottom: 5px;
+	background: rgba(255, 255, 255, 0.5);
+	width: 100%;
+}
+
+.card-title {
+	text-align: center;
 }
