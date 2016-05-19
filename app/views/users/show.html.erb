@@ -35,7 +35,7 @@
     <% @user.recipes.each do |recipe| %>
     <hr />
     <div>
-      <%= link_to recipe.titleize.title, recipe_path(recipe) %>
+      <%= link_to recipe.title.titleize, recipe_path(recipe) %>
     </div>
     <% end %>
     <br />
