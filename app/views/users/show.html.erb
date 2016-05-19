@@ -21,7 +21,7 @@
     <b>Last seen:</b> <%= time_ago_in_words(@user.last_sign_in_at) %> ago
   </p>
   <% if current_user && current_user == @user %>
-  <%= button_to "Edit Profile", edit_user_registration_path, :method => :get, :class => 'btn btn-primary-outline pull-xs-right' %>
+  <%= button_to "Edit Profile", edit_user_registration_path, :method => :get, :class => 'btn btn-primary pull-xs-right' %>
   <% end %>
 </div>
 

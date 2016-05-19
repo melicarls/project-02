@@ -144,7 +144,7 @@ label .ck-button span {
 
 #appeal {
 	margin-top: 20px;
-	background: #fff;
+	background: rgba(255, 255, 255, 0.8);
 	border-radius: 5px;
 	padding: 2px;
 }
@@ -213,4 +213,38 @@ nav a {
 
 .card-title {
 	text-align: center;
+}
+.ps {
+	padding: 15px;
+}
+
+.about_title {
+	color: white
+}
+
+.card_bg {
+	background: rgba(255, 255, 255, 0.8)
+}
+
+.recipe_card {
+	background: rgba(255, 255, 255, 0.7);
+}
+.recipe_img {
+	width: 250px;
+	height: auto;
+}
+
+.recipe_fav {
+	padding: 20px
+}
+.recipe_fav:hover {
+	background-color: transparent;
+	text-decoration: none;
+	color: green;
+}
+.recipe_content {
+	text-align: left
+}
+.recipe_all {
+	padding: 15px;
 }

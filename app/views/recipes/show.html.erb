@@ -1,29 +1,32 @@
 
-<div class="card card-inverse text-xs-center">
-
-  <% if current_user && !current_user.recipes.include?(@recipe) %>
-    <%= button_to "Add to Favorites", new_user_star_path, method: :post, 'class' => 'btn pull-right' %>
-  <% elsif current_user && current_user.recipes.include?(@recipe) %>
-    <%= button_to "Remove from Favorites", delete_user_star_path(@recipe.id), method: :delete, 'class' => 'btn pull-right' %>
-  <% end %>
-
-</br>
-</br>
-
-  <h2><%= @recipe.title.titleize %></h2>
-  <img src=" <%= @recipe.image %> "/>
-
-  <h4>Provided by <%= @recipe.author %></h4>
-  <h4>Ingredients:</h4>
-
-    <% @recipe.ingredients.each do |i| %>
-      <li><%= i.name.capitalize %></li>
+<div class="card card-inverse text-xs-center recipe_card">
+  <div>
+    <% if current_user && !current_user.recipes.include?(@recipe) %>
+      <%= link_to "", new_user_star_path, method: :post, 'class' => 'pull-right fa fa-star-o fa-2x recipe_fav' %>
+    <% elsif current_user && current_user.recipes.include?(@recipe) %>
+      <%= link_to "", delete_user_star_path(@recipe.id), method: :delete, 'class' => 'pull-right fa fa-star fa-2x recipe_fav' %>
     <% end %>
-
-    <h4>This recipe was sourced from Yummly! </br>
-      Please click here to
-      <%= link_to 'visit Yummly', "http://#{@recipe.directions}", :target => '_blank' %>
-      and access the full instructions.
-    </h4>
-
+    <div>
+  <div class="recipe_all">
+    <h2><%= @recipe.title.titleize %></h2>
+    <h4>Provided by <%= @recipe.author %></h4>
+    <div class="row">
+      <div class="col-sm-4">
+        <img class="recipe_img" src=" <%= @recipe.image %> "/>
+      </div>
+      <div class="col-sm-8 recipe_content">
+        <br>
+        <h4>Ingredients:</h4>
+        <% @recipe.ingredients.each do |i| %>
+        <li><%= i.name.capitalize %></li>
+        <% end %>
+        <br>
+        <h4>This recipe was sourced from Yummly! </br>
+          Please click here to
+          <%= link_to 'visit Yummly', "http://#{@recipe.directions}", :target => '_blank' %>
+          and access the full instructions.
+        </h4>
+      </div>
+    </div>
+  </div>
 </div>
