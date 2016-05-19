@@ -121,7 +121,7 @@ label .ck-button span {
 }
 
 #allIngredients {
-	max-height: 60vh;
+	max-height: 380px;
 	overflow: scroll;
 }
 
@@ -187,4 +187,8 @@ nav a {
 
 #yummly	{
 	height: 20px;
+}
+
+.btn {
+	margin-left: 5px;
 }
