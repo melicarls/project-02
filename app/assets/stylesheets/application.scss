@@ -1,5 +1,6 @@
 @import "font-awesome";
 @import "bootstrap";
+@import url(https://fonts.googleapis.com/css?family=Oleo+Script:700);
 
 .navbar {
 	background-color:#219922;
@@ -186,4 +187,12 @@ nav a {
 
 #yummly	{
 	height: 20px;
+}
+
+#user-profile{
+	font-family: 'Didact Gothic', sans-serif;
+}
+
+.form-titles{
+	font-family: 'Oleo Script', cursive;
 }

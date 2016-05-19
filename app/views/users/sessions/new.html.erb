@@ -1,5 +1,5 @@
 <div class="border-form-div">
-  <h2>Sign in</h2>
+  <h2 class="form-titles">Sign in</h2>
   <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
     <%= f.email_field :email, :autofocus => true %>
     <%= f.password_field :password %>
