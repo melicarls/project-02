@@ -1,19 +1,55 @@
+<!-- Toggles About Block -->
+     <button id="how-it-works-btn" class="btn btn-lg" role="button" data-toggle="collapse" href="#collapsible-about" aria-expanded="false" aria-controls="collapsible-about">
+         How does this work? <i class="fa fa-arrow-circle-down" aria-hidden="true"></i></span>
+     </button>
+ </br>
+ </br>
+
+<!-- Collapsible About block-->
+<div class="row collapse" id="collapsible-about">
+  <div class="well col-sm-10 col-sm-offset-1">
+    <legend></legend>
+    <div class="col-sm-4 about-block">
+      <div class="col-sm-12">
+        <h3> Choose your Ingredients!  <i class="fa fa-check-circle" aria-hidden="true"></i></h3>
+        <p> Scroll or use the search bar to find what you have at home. Choose ingredients by clicking on them.</p>
+      </div>
+    </div>
+
+    <div class="col-sm-4 about-block">
+      <div class="col-sm-12">
+        <h3> Search! <i class="fa fa-search" aria-hidden="true"></i> </h3>
+        <p> Click search and look over recipes brought to you by Yummly! </p>
+      </div>
+    </div>
+
+    <div class="col-sm-4 about-block" >
+      <div class="col-sm-12">
+        <h3> Sign Up! <i class="fa fa-sign-in" aria-hidden="true"></i> </h3>
+        <p> Users who <%= link_to "Sign Up", new_user_registration_path %> can save their searches and favorite recipes! </p>
+      </div>
+      <br>
+    </div>
+  </div>
+</div>
+
 <div class="search-ingredients" width=50%; float="left">
     <h4 class="lead">Enter the food that you have on hand and we'll serve up some delicious recipes for you to try!</h5>
 </br>
 
 <!-- Search Ingredient Form -->
-  <div class="text-xs-center">
-      <h6>Select your foods:</h6>
-
+  <div>
+      <h6>Filter your pantry:</h6>
       <input type="text" class="live-search-box" placeholder="Type ingredient name"/>
       <%= form_tag(recipes_path, method: "get") do %>
-
-      <%= submit_tag "Search", :class => "btn btn-success"%>
   </div>
 
-  <div id="allIngredients">
-    <ul class="live-search-list">
+  <div>
+    <button type="button" id="clearPantry" class="btn btn-warning pull-right">Clear Pantry</button>
+    <%= submit_tag "Search", :class => "btn btn-success pull-right"%>
+  <br />
+  <br />
+    <ul class="live-search-list" id="allIngredients">
       <% @ingredients.sort.each do |i| %>
       <label>
         <div class="ck-button">
@@ -29,10 +65,6 @@
     </ul>
   </div>
 
-<button type="button" id="clearPantry" class="btn btn-warning pull-xs-right">Clear Pantry</button>
-
 <% end %>
-</br>
-</br>
 
 </div>

@@ -31,43 +31,6 @@
 
     </br>
 
-    <!-- Toggles About Block -->
-         <button id="how-it-works-btn" class="btn btn-lg" role="button" data-toggle="collapse" href="#collapsible-about" aria-expanded="false" aria-controls="collapsible-about">
-             How does this work? <i class="fa fa-arrow-circle-down" aria-hidden="true"></i></span>
-         </button>
-     </br>
-     </br>
-
-    <!-- Collapsible About block-->
-    <div class="row collapse" id="collapsible-about">
-      <div class="well col-sm-10 col-sm-offset-1">
-        <legend></legend>
-
-        <div class="col-sm-4 about-block">
-          <div class="col-sm-12">
-            <h3>Check for Ingredients! <i class="fa fa-check-circle" aria-hidden="true"></i></h3>
-            <p> Use the search bar to look for ingredients or scroll and find what you have. Check on ingredients by clicking on them.</p>
-          </div>
-        </div>
-
-        <div class="col-sm-4 about-block">
-          <div class="col-sm-12">
-            <h3> Search! <i class="fa fa-search" aria-hidden="true"></i> </h3>
-            <p> Click search and look over Recipes brought to you by Yummly! </p>
-          </div>
-        </div>
-
-        <div class="col-sm-4 about-block" >
-          <div class="col-sm-12">
-            <h3> Sign Up! <i class="fa fa-sign-in" aria-hidden="true"></i> </h3>
-            <p> Users who <%= link_to "Sign Up", new_user_registration_path %> can save their searches and favorite recipes! </p>
-          </div>
-          <br>
-        </div>
-      </div>
-    </div>
-
-
     <div class="container">
 
       <% flash.each do |type, message| %>
