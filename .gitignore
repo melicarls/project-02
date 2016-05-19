@@ -1,4 +1,4 @@
-
+.env
 *.rbc
 capybara-*.html
 /log
