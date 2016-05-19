@@ -83,8 +83,7 @@ module RecipesHelper
         result["ingredients"].each do |ingred|
           # Sanitize the ingredient name, making it more likely that there will be a match for it in our db
           # If we have an ingredient object for it, link that ingredient to the recipe
-          temp_name = sanitize_ingredient(ingred)
-          temp_i = Ingredient.find_by(name: temp_name)
+          temp_i = Ingredient.find_by(name: sanitize_ingredient(ingred))
           if temp_i
             # If there is a match for that ingredient, push it into the recipe's ingredients array
             temp.ingredients.push(temp_i)
@@ -102,6 +101,7 @@ module RecipesHelper
   #Accepts a search term and tries to find a searchable version by comparing it with the database
   def sanitize_ingredient(ingredient)
     # Catch-all for types of pasta
+    ingredient.downcase!
     if ingredient.include?('penne') || ingredient.include?('spaghetti') || ingredient.include?('fettuccini') || ingredient.include?('rigatoni') || ingredient.include?('farfalle') || ingredient.include?('linguini')
       return 'pasta'
     # If the ingredient is plural, singularize it
@@ -129,11 +129,10 @@ module RecipesHelper
         end
       end
     end
-    # If there was only one match found, assume that the search was successfull and return that match
-    return matches_found[0] if matches_found.length == 1
     # If there were multiple or 0 matches found for that ingredient (ie the words could be found in multiple ingredients)
-    # Return the original search term. The search was unreliable.
-    ingredient
+    # return the original search term. The search was unreliable.
+    # If there was only one match found, assume that the search was successfull and return that match
+    matches_found.length == 1 ? matches_found[0] : ingredient
   end
 
 end
