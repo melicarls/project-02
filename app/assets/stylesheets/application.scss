@@ -1,5 +1,6 @@
 @import "font-awesome";
 @import "bootstrap";
+@import url(https://fonts.googleapis.com/css?family=Oleo+Script:700);
 
 .navbar {
 	background-color:#219922;
@@ -16,14 +17,17 @@ body {
   font-family:sans-serif;
 }
 
-#recipes {
+.recipes {
   padding: 20px;
-  margin-left: auto;
+	margin: 30px;
+	height: 680px;
+	background: rgba(255, 255, 255, 0.8);
+	overflow: hidden;
 }
 
-#recipes img {
-  height: 300px;
-  width: auto;
+.recipes img {
+  width: 70%;
+	margin-left: 15%;
 }
 
 .jumbotron img {
@@ -90,8 +94,7 @@ label .ck-button span {
   max-width: 300px;
   padding: 19px 29px 29px;
   margin: 0 auto 20px;
-  background-color: #fff;
-  border: 1px solid #e5e5e5;
+  background-color: rgba(255, 255, 255, 0.5);
   -webkit-border-radius: 5px;
      -moz-border-radius: 5px;
           border-radius: 5px;
@@ -116,12 +119,12 @@ label .ck-button span {
 	max-width: 800px;
 	padding: 19px 29px 29px;
 	margin: 0 auto 20px;
-	background-color: #fff;
+	background-color: rgba(255, 255, 255, 0.5);
 	border: 1px solid #e5e5e5;
 }
 
 #allIngredients {
-	max-height: 60vh;
+	max-height: 380px;
 	overflow: scroll;
 }
 
@@ -137,7 +140,6 @@ label .ck-button span {
 	-webkit-column-count: 3;
 		 -moz-column-count: 3;
 					column-count: 3;
-	background: rgba(255, 255, 255, 0.5);
 }
 
 #appeal {
@@ -189,6 +191,29 @@ nav a {
 	height: 20px;
 }
 
+#user-profile{
+	font-family: 'Didact Gothic', sans-serif;
+}
+
+.form-titles{
+	font-family: 'Oleo Script', cursive;
+}
+
+.btn {
+	margin-left: 5px;
+}
+
+#indexText {
+	border-radius: 5px;
+	padding: 3px;
+	margin-bottom: 5px;
+	background: rgba(255, 255, 255, 0.5);
+	width: 100%;
+}
+
+.card-title {
+	text-align: center;
+}
 .ps {
 	padding: 15px;
 }
