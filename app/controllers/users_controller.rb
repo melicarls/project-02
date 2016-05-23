@@ -1,9 +1,11 @@
 class UsersController < ApplicationController
 
+  # TODO: Be careful, your user routes are visible to ALL people, logged in or not.  Consider adding a current_user.id == params[:id] check to ensure privacy -jc
   def show
     @user = User.find(params[:id])
   end
 
+  # TODO: Please include a brief comment on this awesome method -jc
   def star
     @recipe = Recipe.find(params[:id])
     if !current_user
@@ -20,6 +22,7 @@ class UsersController < ApplicationController
     redirect_to recipe_path(@recipe)
   end
 
+  # TODO: Please include a brief comment on this awesome method -jc
   def removestar
     @recipe = Recipe.find(params[:id])
     if !current_user

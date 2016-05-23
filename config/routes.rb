@@ -6,8 +6,10 @@ Rails.application.routes.draw do
   resources :recipes, only: [:index, :show]
   devise_for :users, :controllers => {:registrations => "my_devise/registrations"}
   get '/users/:id', to: 'users#show', as: 'user'
+  # TODO: These are not restful. but we talked about this so it's all good -jc
   post '/users/starred/:id', to: 'users#star', as: 'new_user_star'
   delete '/users/starred/:id', to: 'users#removestar', as: 'delete_user_star'
+  
   get '/about', to: 'recipes#about', as: 'about'
 # Catch-all route
   match '*path', to: 'recipes#search', via: :all

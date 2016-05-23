@@ -8,6 +8,7 @@ module DeviseHelper
           :count => resource.errors.count,
           :resource => resource.class.model_name.human.downcase)
 
+    #TODO: Did you write this? -jc
     html = <<-HTML
     <div id="error_explanation">
       <div class="alert alert-danger fade in">

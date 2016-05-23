@@ -1,24 +1,30 @@
 <div class="border-form-div col-md-6" id="user-profile">
   <% if @user.image.blank? %>
-    <%= image_tag "defaultprofile.jpg", :width => 250 %>
-  <% else %>
-    <%= image_tag @user.image, :width => 250, :class => "img-circle" %>
+  <%= image_tag "defaultprofile.jpg", :width => 250 %>
+<% else %>
+  <%= image_tag @user.image, :width => 250, :class => "img-circle" %>
   <% end %>
 
   <p>
-    <b>First Name:</b> <%= @user.first_name %>
+    <b>First Name:</b>
+    <%= @user.first_name %>
   </p>
   <p>
-    <b>Last Name:</b> <%= @user.last_name %>
+    <b>Last Name:</b>
+    <%= @user.last_name %>
   </p>
   <p>
-    <b>Email address:</b> <%= @user.email %>
+    <b>Email address:</b>
+    <%= @user.email %>
   </p>
   <p>
-    <b>Date joined:</b> <%= @user.created_at.strftime("%m/%d/%Y") %>
+    <b>Date joined:</b>
+    <%= @user.created_at.strftime("%m/%d/%Y") %>
   </p>
   <p>
-    <b>Last seen:</b> <%= time_ago_in_words(@user.last_sign_in_at) %> ago
+    <b>Last seen:</b>
+    <%= time_ago_in_words(@user.last_sign_in_at) %>
+    ago
   </p>
   <% if current_user && current_user == @user %>
   <%= button_to "Edit Profile", edit_user_registration_path, :method => :get, :class => 'btn btn-primary pull-xs-right' %>
@@ -28,16 +34,16 @@
 <div class="starredRecipes col-md-5 col-md-offset-1">
   <h3 class="form-titles">Your favorite recipes</h3>
   <% if @user.recipes.length == 0 %>
-    <p>
-      Ooops, there's nothing here! If you make something that you like and 'star' it, it will appear in this list. Better get cookin'!
-    </p>
-  <% else %>
-    <% @user.recipes.each do |recipe| %>
-    <hr />
-    <div>
-      <%= link_to recipe.title.titleize, recipe_path(recipe) %>
-    </div>
-    <% end %>
-    <br />
+  <p>
+    Ooops, there's nothing here! If you make something that you like and 'star' it, it will appear in this list. Better get cookin'!
+  </p>
+<% else %>
+  <% @user.recipes.each do |recipe| %>
+  <hr/>
+  <div>
+    <%= link_to recipe.title.titleize, recipe_path(recipe) %>
+  </div>
+  <% end %>
+  <br/>
   <% end %>
 </div>

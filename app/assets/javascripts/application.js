@@ -22,8 +22,10 @@ $(document).on('ready', function(){
     $(this).attr('data-search-term', $(this).text().toLowerCase());
   });
   $('.live-search-box').on('keyup', function(){
+  /* TODO: Fix indentation -jc */
   var searchTerm = $(this).val().toLowerCase();
     $('.live-search-list .ck-button').each(function(){
+      /* TODO: For better readibility consider extracting the below conditional into a separate variable. -jc */
       if ($(this).filter('[data-search-term *= ' + searchTerm + ']').length > 0 || searchTerm.length < 1) {
           $(this).show();
       } else {
