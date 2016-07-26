@@ -15,31 +15,3 @@
 //= require tether
 //= require bootstrap-sprockets
 //= require_tree .
-
-$(document).on('ready', function(){
-  console.log("app.js is loaded!");
-
-  $('nav').on('click', function() {
-    console.log("Sanity check!");
-  });
-
-  // Filter search
-  $('.live-search-list .ck-button').each(function(){
-    $(this).attr('data-search-term', $(this).text().toLowerCase());
-  });
-  $('.live-search-box').on('keyup', function(){
-  var searchTerm = $(this).val().toLowerCase();
-    $('.live-search-list .ck-button').each(function(){
-      if ($(this).filter('[data-search-term *= ' + searchTerm + ']').length > 0 || searchTerm.length < 1) {
-          $(this).show();
-      } else {
-          $(this).hide();
-      }
-    });
-  });
-
-  $('#clearPantry').on('click', function(e) {
-    $('input:checkbox').attr('checked',false);
-  });
-
-});
