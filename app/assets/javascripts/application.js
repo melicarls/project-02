@@ -18,6 +18,10 @@
 
 $(document).on('ready', function(){
 
+  $('nav').on('click', function() {
+    console.log("Sanity check!");
+  });
+
   // Filter search
   $('.live-search-list .ck-button').each(function(){
     $(this).attr('data-search-term', $(this).text().toLowerCase());
