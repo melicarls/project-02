@@ -17,6 +17,7 @@
 //= require_tree .
 
 $(document).on('ready', function(){
+  console.log("app.js is loaded!");
 
   $('nav').on('click', function() {
     console.log("Sanity check!");
